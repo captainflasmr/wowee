@@ -1,0 +1,27 @@
+* WOWEE - Windows Operating With Emacs Enhancements
+
+** Features
+
+- Allows Emacs-like commands and keybinds in Windows and is based on EWOW -- Emacs Way of Operating Windows
+
+- It is written in AutoHotKey v2 and currently includes:
+
+  - Emacs style navigation
+
+** Usage
+
+Install AutoHotKey, and run "wowee.ahk" then emacs commands are available. You can quit WOWEE from tasktray icon.
+
+** Configuration
+
+*** Abstract
+
+WOWEE is a set of AutoHotKey scripts :
+
+- fundamental.ahk :: provides a bunch of functions and variables, that are used to implement emacs-like commands and keybinds
+
+- commands.ahk :: provides basic emacs commands implementation
+
+- commands_util :: simple command utility functions
+
+- keybinds.ahk :: provides the default keybinds
