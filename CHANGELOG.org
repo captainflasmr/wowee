@@ -1,0 +1,28 @@
+#+title: ChangeLog of wowee
+#+author: James Dyer
+#+email: captainflasmr@gmail.com
+#+language: en
+#+options: ':t toc:nil author:nil email:nil num:nil title:nil
+#+todo: TODO DOING | DONE
+#+startup: showall
+
+This document contains the release notes for each tagged commit on the
+project's main git repository: [[https://github.com/captainflasmr/wowee]].
+
+With a roadmap and issues also supplied
+
+* Whats New
+
+Version 0.1.0+
+
+* ISSUES
+
+NONE
+
+* Versions
+
+** 0.1.0 on <>
+
+* Testing
+
+Run wowee.ahk on Windows and perform emacs like commands.
