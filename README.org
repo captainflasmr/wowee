@@ -42,29 +42,24 @@ WOWEE is a set of AutoHotKey scripts :
 | [[file:README.org::*swap scroll_up and scroll_down][swap scroll_up and scroll_down]] | [[file:README.org::*motion commands][motion commands]]         | [[file:README.org::*forward_char][forward_char]]           |
 | [[file:README.org::*scroll_left][scroll_left]]                    | [[file:README.org::*jumping around commands][jumping around commands]] | [[file:README.org::*backward_char][backward_char]]          |
 | [[file:README.org::*scroll_right][scroll_right]]                   |                         | [[file:README.org::*forward_word][forward_word]]           |
-| [[file:README.org::*beginning_of_buffer][beginning_of_buffer]]            |                         | [[file:README.org::*backward_word][backward_word]]          |
-| [[file:README.org::*end_of_buffer][end_of_buffer]]                  |                         | [[file:README.org::*next_line][next_line]]              |
-| [[file:README.org::*goto_line][goto_line]]                      |                         | [[file:README.org::*previous_line][previous_line]]          |
-| [[file:README.org::*region commands][region commands]]                |                         | [[file:README.org::*scroll_down][scroll_down]]            |
-| [[file:README.org::*mark_word][mark_word]]                      |                         | [[file:README.org::*scroll_up][scroll_up]]              |
-| [[file:README.org::*mark_whole_line][mark_whole_line]]                |                         | [[file:README.org::*move_beginning_of_line][move_beginning_of_line]] |
-| [[file:README.org::*mark_whole_buffer][mark_whole_buffer]]              |                         | [[file:README.org::*move_end_of_line][move_end_of_line]]       |
-| [[file:README.org::*kill_ring_save][kill_ring_save]]                 |                         | [[file:README.org::*delete_char][delete_char]]            |
-| [[file:README.org::*kill_region][kill_region]]                    |                         |                        |
-| [[file:README.org::*yank][yank]]                           |                         |                        |
-| [[file:README.org::*yank_pop][yank_pop]]                       |                         |                        |
-| [[file:README.org::*delete_backward_char][delete_backward_char]]           |                         |                        |
-| [[file:README.org::*kill_word][kill_word]]                      |                         |                        |
-| [[file:README.org::*backward_kill_word][backward_kill_word]]             |                         |                        |
-| [[file:README.org::*kill_line][kill_line]]                      |                         |                        |
-| [[file:README.org::*kill_whole_line][kill_whole_line]]                |                         |                        |
-| [[file:README.org::*newline and indent commands][newline and indent commands]]    |                         |                        |
-| [[file:README.org::*newline][newline]]                        |                         |                        |
+| [[file:README.org::*goto_line][goto_line]]                      |                         | [[file:README.org::*backward_word][backward_word]]          |
+| [[file:README.org::*region commands][region commands]]                |                         | [[file:README.org::*next_line][next_line]]              |
+| [[file:README.org::*mark_word][mark_word]]                      |                         | [[file:README.org::*previous_line][previous_line]]          |
+| [[file:README.org::*mark_whole_line][mark_whole_line]]                |                         | [[file:README.org::*scroll_down][scroll_down]]            |
+| [[file:README.org::*mark_whole_buffer][mark_whole_buffer]]              |                         | [[file:README.org::*scroll_up][scroll_up]]              |
+| [[file:README.org::*kill_region][kill_region]]                    |                         | [[file:README.org::*move_beginning_of_line][move_beginning_of_line]] |
+| [[file:README.org::*yank_pop][yank_pop]]                       |                         | [[file:README.org::*move_end_of_line][move_end_of_line]]       |
+| [[file:README.org::*delete_backward_char][delete_backward_char]]           |                         | [[file:README.org::*beginning_of_buffer][beginning_of_buffer]]    |
+| [[file:README.org::*kill_word][kill_word]]                      |                         | [[file:README.org::*end_of_buffer][end_of_buffer]]          |
+| [[file:README.org::*backward_kill_word][backward_kill_word]]             |                         | [[file:README.org::*kill_ring_save][kill_ring_save]]         |
+| [[file:README.org::*kill_line][kill_line]]                      |                         | [[file:README.org::*yank][yank]]                   |
+| [[file:README.org::*kill_whole_line][kill_whole_line]]                |                         | [[file:README.org::*delete_char][delete_char]]            |
+| [[file:README.org::*newline and indent commands][newline and indent commands]]    |                         | [[file:README.org::*undo_only][undo_only]]              |
+| [[file:README.org::*newline][newline]]                        |                         | [[file:README.org::*save_buffer][save_buffer]]            |
 | [[file:README.org::*open_line][open_line]]                      |                         |                        |
 | [[file:README.org::*indent_for_tab_command][indent_for_tab_command]]         |                         |                        |
 | [[file:README.org::*delete_indentation][delete_indentation]]             |                         |                        |
 | [[file:README.org::*edit commands][edit commands]]                  |                         |                        |
-| [[file:README.org::*undo_only][undo_only]]                      |                         |                        |
 | [[file:README.org::*redo][redo]]                           |                         |                        |
 | [[file:README.org::*transpose_chars][transpose_chars]]                |                         |                        |
 | [[file:README.org::*transpose_words][transpose_words]]                |                         |                        |
@@ -96,7 +91,6 @@ WOWEE is a set of AutoHotKey scripts :
 | [[file:README.org::*digit argument commands][digit argument commands]]        |                         |                        |
 | [[file:README.org::*macro recording commands][macro recording commands]]       |                         |                        |
 | [[file:README.org::*files commands][files commands]]                 |                         |                        |
-| [[file:README.org::*save_buffer][save_buffer]]                    |                         |                        |
 | [[file:README.org::*write_file][write_file]]                     |                         |                        |
 | [[file:README.org::*find_file][find_file]]                      |                         |                        |
 | [[file:README.org::*dired][dired]]                          |                         |                        |
@@ -132,16 +126,16 @@ WOWEE is a set of AutoHotKey scripts :
 *** TODO scroll_right
 *** DONE move_beginning_of_line
 *** DONE move_end_of_line
-*** TODO beginning_of_buffer
-*** TODO end_of_buffer
+*** DONE beginning_of_buffer
+*** DONE end_of_buffer
 *** TODO goto_line
 ** TODO region commands
 *** TODO mark_word
 *** TODO mark_whole_line
 *** TODO mark_whole_buffer
-*** TODO kill_ring_save
+*** DONE kill_ring_save
 *** TODO kill_region
-*** TODO yank
+*** DONE yank
 *** TODO yank_pop
 *** DONE delete_char
 *** TODO delete_backward_char
@@ -155,7 +149,7 @@ WOWEE is a set of AutoHotKey scripts :
 *** TODO indent_for_tab_command
 *** TODO delete_indentation
 ** TODO edit commands
-*** TODO undo_only
+*** DONE undo_only
 *** TODO redo
 *** TODO transpose_chars
 *** TODO transpose_words
@@ -187,7 +181,7 @@ WOWEE is a set of AutoHotKey scripts :
 ** TODO digit argument commands
 ** TODO macro recording commands
 ** TODO files commands
-*** TODO save_buffer
+*** DONE save_buffer
 *** TODO write_file
 *** TODO find_file
 *** TODO dired
