@@ -2,6 +2,26 @@
 
 #Include commands_util.ahk
 
+global selecting := false
+
+set_mark_command() {
+        global selecting
+        if (selecting) {
+                selecting := false
+                command_simple("{Shift up}", 0, 1)
+        }
+        else {
+                selecting := true
+                command_simple("{Shift down}", 0, 1)
+        }
+}
+
+quit() {
+        global selecting
+        selecting := false
+        command_simple("{Shift up}", 0, 1)
+}
+
 ;; --------
 ;; motion
 ;; --------
@@ -79,7 +99,12 @@ delete_char() {
 ;; ------
 
 kill_ring_save() {
-    command_simple("^c", 1, 1)
+        quit()
+        command_simple("^c", 1, 1)
+}
+
+kill_line() {
+    command_simple("{Shift down}{End}{Shift up}^x", 1, 0)
 }
 
 yank() {
@@ -101,3 +126,7 @@ undo_only() {
 save_buffer() {
     command_simple("^s", 0, 0)
 }
+
+;; ------
+;; system
+;; ------
