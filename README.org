@@ -6,13 +6,15 @@
 #+todo: TODO DOING | DONE IGNORE
 #+startup: showall
 
-* WOWEE - Windows Operating With Emacs Enhancements
+#+attr_org: :width 300px
+#+attr_html: :width 100%
+[[file:img/WOWEE---Windows-Operating-With-Emacs-Enhancements_banner.jpg]]
 
-** Overview
+* Overview
 
 WOWEE is a set of AutoHotKey scripts designed to bring Emacs-like commands and keybindings to the Windows operating system. Based on the concept of EWOW (Emacs Way of Operating Windows), WOWEE allows you to use Emacs-style navigation and commands throughout your Windows environment.
 
-** Features
+* Features
 
 - Emacs-like commands and keybindings in Windows
 - Based on EWOW – Emacs Way of Operating Windows
@@ -22,9 +24,9 @@ WOWEE is a set of AutoHotKey scripts designed to bring Emacs-like commands and k
 - Easily add your own keybindings by modifying AHK source files
 - *Bindings bespoke to individual applications
 
-*** My current thoughts
+** My current thoughts
 
-**** Bindings bespoke to individual applications
+*** Bindings bespoke to individual applications
 
 - I am playing around with the idea of application specific bindings within the keybinds.ahk file, for example something like :
 
@@ -55,7 +57,7 @@ WOWEE is a set of AutoHotKey scripts designed to bring Emacs-like commands and k
 
   As part of this I might have to expand the kanban per application, or maybe separate kanbans on which functions have been implemented.
 
-*** kanban
+** kanban
 
 This kanban board is keeping track of those original EWOW functions.
 
@@ -64,63 +66,62 @@ The IGNORE column includes functions that I am definitely not going to implement
 The EXTRA section are additional commands that I am adding.
 
 #+begin: kanban :layout ("..." . 50) :scope nil :range ("TODO" . "IGNORE") :sort "O" :depth 3 :compressed t
-| TODO                         | DOING                   | DONE                     | IGNORE                   |
-|------------------------------+-------------------------+--------------------------+--------------------------|
-| [[file:README.org::*EXTRA ERGO PRESET SELECTION][EXTRA ERGO PRESET SELECTION]]  | [[file:README.org::*---- VISUAL STUDIO ----][---- VISUAL STUDIO ----]] | [[file:README.org::*MOTION COMMANDS][MOTION COMMANDS]]          | [[file:README.org::*- scroll_left][- scroll_left]]            |
-| [[file:README.org::*ADD PROGRAM SPECIFIC PRESETS][ADD PROGRAM SPECIFIC PRESETS]] | [[file:README.org::*- isearch_backwards][- isearch_backwards]]     | [[file:README.org::*- forward_char][- forward_char]]           | [[file:README.org::*- scroll_right][- scroll_right]]           |
-| [[file:README.org::*REGION COMMANDS][REGION COMMANDS]]              | [[file:README.org::*- isearch_forwards][- isearch_forwards]]      | [[file:README.org::*- backward_char][- backward_char]]          | [[file:README.org::*- open_line][- open_line]]              |
-| [[file:README.org::*- mark_word][- mark_word]]                  | [[file:README.org::*- recenter_line][- recenter_line]]         | [[file:README.org::*- forward_word][- forward_word]]           | [[file:README.org::*- transpose_chars][- transpose_chars]]        |
-| [[file:README.org::*- mark_whole_buffer][- mark_whole_buffer]]          | [[file:README.org::*- indent_line][- indent_line]]           | [[file:README.org::*- backward_word][- backward_word]]          | [[file:README.org::*- transpose_words][- transpose_words]]        |
-| [[file:README.org::*- kill_region][- kill_region]]                |                         | [[file:README.org::*- next_line][- next_line]]              | [[file:README.org::*- transpose_lines][- transpose_lines]]        |
-| [[file:README.org::*- yank_pop][- yank_pop]]                   |                         | [[file:README.org::*- previous_line][- previous_line]]          | [[file:README.org::*CASE CONVERSION COMMANDS][CASE CONVERSION COMMANDS]] |
-| [[file:README.org::*- delete_backward_char][- delete_backward_char]]       |                         | [[file:README.org::*JUMPING AROUND COMMANDS][JUMPING AROUND COMMANDS]]  | [[file:README.org::*- upcase_region][- upcase_region]]          |
-| [[file:README.org::*- kill_word][- kill_word]]                  |                         | [[file:README.org::*- scroll_down][- scroll_down]]            | [[file:README.org::*- downcase_region][- downcase_region]]        |
-| [[file:README.org::*- kill_whole_line][- kill_whole_line]]            |                         | [[file:README.org::*- scroll_up][- scroll_up]]              | [[file:README.org::*- upcase_word][- upcase_word]]            |
-| [[file:README.org::*NEWLINE AND INDENT COMMANDS][NEWLINE AND INDENT COMMANDS]]  |                         | [[file:README.org::*- move_beginning_of_line][- move_beginning_of_line]] | [[file:README.org::*- downcase_word][- downcase_word]]          |
-| [[file:README.org::*- newline][- newline]]                    |                         | [[file:README.org::*- move_end_of_line][- move_end_of_line]]       | [[file:README.org::*- capitalize_word][- capitalize_word]]        |
-| [[file:README.org::*- delete_indentation][- delete_indentation]]         |                         | [[file:README.org::*- beginning_of_buffer][- beginning_of_buffer]]    |                          |
-| [[file:README.org::*EDIT COMMANDS][EDIT COMMANDS]]                |                         | [[file:README.org::*- end_of_buffer][- end_of_buffer]]          |                          |
-| [[file:README.org::*- redo][- redo]]                       |                         | [[file:README.org::*- goto_line][- goto_line]]              |                          |
-| [[file:README.org::*- query_replace][- query_replace]]              |                         | [[file:README.org::*- mark_whole_line][- mark_whole_line]]        |                          |
-| [[file:README.org::*- search_forward][- search_forward]]             |                         | [[file:README.org::*- kill_ring_save][- kill_ring_save]]         |                          |
-| [[file:README.org::*- search_backward][- search_backward]]            |                         | [[file:README.org::*- yank][- yank]]                   |                          |
-| [[file:README.org::*- overwrite_mode][- overwrite_mode]]             |                         | [[file:README.org::*- delete_char][- delete_char]]            |                          |
-| [[file:README.org::*INSERT PAIRS COMMANDS][INSERT PAIRS COMMANDS]]        |                         | [[file:README.org::*- backward_kill_word][- backward_kill_word]]     |                          |
-| [[file:README.org::*- insert_parentheses][- insert_parentheses]]         |                         | [[file:README.org::*- kill_line][- kill_line]]              |                          |
-| [[file:README.org::*- insert_comment][- insert_comment]]             |                         | [[file:README.org::*- indent_for_tab_command][- indent_for_tab_command]] |                          |
-| [[file:README.org::*- indent_new_comment_line][- indent_new_comment_line]]    |                         | [[file:README.org::*- undo_only][- undo_only]]              |                          |
-| [[file:README.org::*OTHER COMMANDS][OTHER COMMANDS]]               |                         | [[file:README.org::*- set_mark_command][- set_mark_command]]       |                          |
-| [[file:README.org::*- shell][- shell]]                      |                         | [[file:README.org::*- set_cx_command][- set_cx_command]]         |                          |
-| [[file:README.org::*- shell_command][- shell_command]]              |                         | [[file:README.org::*- keyboard_quit][- keyboard_quit]]          |                          |
-| [[file:README.org::*- facemenu][- facemenu]]                   |                         | [[file:README.org::*- save_buffer][- save_buffer]]            |                          |
-| [[file:README.org::*- help][- help]]                       |                         |                          |                          |
-| [[file:README.org::*SYSTEM COMMANDS][SYSTEM COMMANDS]]              |                         |                          |                          |
-| [[file:README.org::*- ignore][- ignore]]                     |                         |                          |                          |
-| [[file:README.org::*- repeat][- repeat]]                     |                         |                          |                          |
-| [[file:README.org::*DIGIT ARGUMENT COMMANDS][DIGIT ARGUMENT COMMANDS]]      |                         |                          |                          |
-| [[file:README.org::*MACRO RECORDING COMMANDS][MACRO RECORDING COMMANDS]]     |                         |                          |                          |
-| [[file:README.org::*FILES COMMANDS][FILES COMMANDS]]               |                         |                          |                          |
-| [[file:README.org::*- write_file][- write_file]]                 |                         |                          |                          |
-| [[file:README.org::*- find_file][- find_file]]                  |                         |                          |                          |
-| [[file:README.org::*- dired][- dired]]                      |                         |                          |                          |
-| [[file:README.org::*WINDOWS FRAMES COMMANDS][WINDOWS FRAMES COMMANDS]]      |                         |                          |                          |
-| [[file:README.org::*- kill_frame][- kill_frame]]                 |                         |                          |                          |
-| [[file:README.org::*- delete_window][- delete_window]]              |                         |                          |                          |
-| [[file:README.org::*- split_window][- split_window]]               |                         |                          |                          |
-| [[file:README.org::*- next_window][- next_window]]                |                         |                          |                          |
-| [[file:README.org::*- previous_window][- previous_window]]            |                         |                          |                          |
-| [[file:README.org::*- suspend_frame][- suspend_frame]]              |                         |                          |                          |
-| [[file:README.org::*ADD HOOKS][ADD HOOKS]]                    |                         |                          |                          |
-| [[file:README.org::*ADD IGNORE FRAMES][ADD IGNORE FRAMES]]            |                         |                          |                          |
-| [[file:README.org::*ADD GENERIC GOTO LINE][ADD GENERIC GOTO LINE]]        |                         |                          |                          |
-| [[file:README.org::*ADD KILL RING][ADD KILL RING]]                |                         |                          |                          |
-| [[file:README.org::*ADD MOUSE EVENTS][ADD MOUSE EVENTS]]             |                         |                          |                          |
-| [[file:README.org::*ADD C-X][ADD C-X]]                      |                         |                          |                          |
-| [[file:README.org::*EXTRA][EXTRA]]                        |                         |                          |                          |
-| [[file:README.org::*- ctrl_mapping][- ctrl_mapping]]               |                         |                          |                          |
+| TODO                        | DOING                        | DONE                     | IGNORE                   |
+|-----------------------------+------------------------------+--------------------------+--------------------------|
+| [[file:README.org::*REGION COMMANDS][REGION COMMANDS]]             | [[file:README.org::*---- VISUAL STUDIO ----][---- VISUAL STUDIO ----]]      | [[file:README.org::*MOTION COMMANDS][MOTION COMMANDS]]          | [[file:README.org::*- scroll_left][- scroll_left]]            |
+| [[file:README.org::*- mark_word][- mark_word]]                 | [[file:README.org::*- isearch_backwards][- isearch_backwards]]          | [[file:README.org::*- forward_char][- forward_char]]           | [[file:README.org::*- scroll_right][- scroll_right]]           |
+| [[file:README.org::*- mark_whole_buffer][- mark_whole_buffer]]         | [[file:README.org::*- isearch_forwards][- isearch_forwards]]           | [[file:README.org::*- backward_char][- backward_char]]          | [[file:README.org::*- open_line][- open_line]]              |
+| [[file:README.org::*- kill_region][- kill_region]]               | [[file:README.org::*- recenter_line][- recenter_line]]              | [[file:README.org::*- forward_word][- forward_word]]           | [[file:README.org::*- transpose_chars][- transpose_chars]]        |
+| [[file:README.org::*- yank_pop][- yank_pop]]                  | [[file:README.org::*- indent_line][- indent_line]]                | [[file:README.org::*- backward_word][- backward_word]]          | [[file:README.org::*- transpose_words][- transpose_words]]        |
+| [[file:README.org::*- delete_backward_char][- delete_backward_char]]      | [[file:README.org::*ADD PROGRAM SPECIFIC PRESETS][ADD PROGRAM SPECIFIC PRESETS]] | [[file:README.org::*- next_line][- next_line]]              | [[file:README.org::*- transpose_lines][- transpose_lines]]        |
+| [[file:README.org::*- kill_word][- kill_word]]                 |                              | [[file:README.org::*- previous_line][- previous_line]]          | [[file:README.org::*CASE CONVERSION COMMANDS][CASE CONVERSION COMMANDS]] |
+| [[file:README.org::*- kill_whole_line][- kill_whole_line]]           |                              | [[file:README.org::*JUMPING AROUND COMMANDS][JUMPING AROUND COMMANDS]]  | [[file:README.org::*- upcase_region][- upcase_region]]          |
+| [[file:README.org::*NEWLINE AND INDENT COMMANDS][NEWLINE AND INDENT COMMANDS]] |                              | [[file:README.org::*- scroll_down][- scroll_down]]            | [[file:README.org::*- downcase_region][- downcase_region]]        |
+| [[file:README.org::*- newline][- newline]]                   |                              | [[file:README.org::*- scroll_up][- scroll_up]]              | [[file:README.org::*- upcase_word][- upcase_word]]            |
+| [[file:README.org::*- delete_indentation][- delete_indentation]]        |                              | [[file:README.org::*- move_beginning_of_line][- move_beginning_of_line]] | [[file:README.org::*- downcase_word][- downcase_word]]          |
+| [[file:README.org::*EDIT COMMANDS][EDIT COMMANDS]]               |                              | [[file:README.org::*- move_end_of_line][- move_end_of_line]]       | [[file:README.org::*- capitalize_word][- capitalize_word]]        |
+| [[file:README.org::*- redo][- redo]]                      |                              | [[file:README.org::*- beginning_of_buffer][- beginning_of_buffer]]    |                          |
+| [[file:README.org::*- query_replace][- query_replace]]             |                              | [[file:README.org::*- end_of_buffer][- end_of_buffer]]          |                          |
+| [[file:README.org::*- search_forward][- search_forward]]            |                              | [[file:README.org::*- goto_line][- goto_line]]              |                          |
+| [[file:README.org::*- search_backward][- search_backward]]           |                              | [[file:README.org::*- mark_whole_line][- mark_whole_line]]        |                          |
+| [[file:README.org::*- overwrite_mode][- overwrite_mode]]            |                              | [[file:README.org::*- kill_ring_save][- kill_ring_save]]         |                          |
+| [[file:README.org::*INSERT PAIRS COMMANDS][INSERT PAIRS COMMANDS]]       |                              | [[file:README.org::*- yank][- yank]]                   |                          |
+| [[file:README.org::*- insert_parentheses][- insert_parentheses]]        |                              | [[file:README.org::*- delete_char][- delete_char]]            |                          |
+| [[file:README.org::*- insert_comment][- insert_comment]]            |                              | [[file:README.org::*- backward_kill_word][- backward_kill_word]]     |                          |
+| [[file:README.org::*- indent_new_comment_line][- indent_new_comment_line]]   |                              | [[file:README.org::*- kill_line][- kill_line]]              |                          |
+| [[file:README.org::*OTHER COMMANDS][OTHER COMMANDS]]              |                              | [[file:README.org::*- indent_for_tab_command][- indent_for_tab_command]] |                          |
+| [[file:README.org::*- shell][- shell]]                     |                              | [[file:README.org::*- undo_only][- undo_only]]              |                          |
+| [[file:README.org::*- shell_command][- shell_command]]             |                              | [[file:README.org::*- set_mark_command][- set_mark_command]]       |                          |
+| [[file:README.org::*- facemenu][- facemenu]]                  |                              | [[file:README.org::*- set_cx_command][- set_cx_command]]         |                          |
+| [[file:README.org::*- help][- help]]                      |                              | [[file:README.org::*- keyboard_quit][- keyboard_quit]]          |                          |
+| [[file:README.org::*SYSTEM COMMANDS][SYSTEM COMMANDS]]             |                              | [[file:README.org::*- save_buffer][- save_buffer]]            |                          |
+| [[file:README.org::*- ignore][- ignore]]                    |                              |                          |                          |
+| [[file:README.org::*- repeat][- repeat]]                    |                              |                          |                          |
+| [[file:README.org::*DIGIT ARGUMENT COMMANDS][DIGIT ARGUMENT COMMANDS]]     |                              |                          |                          |
+| [[file:README.org::*MACRO RECORDING COMMANDS][MACRO RECORDING COMMANDS]]    |                              |                          |                          |
+| [[file:README.org::*FILES COMMANDS][FILES COMMANDS]]              |                              |                          |                          |
+| [[file:README.org::*- write_file][- write_file]]                |                              |                          |                          |
+| [[file:README.org::*- find_file][- find_file]]                 |                              |                          |                          |
+| [[file:README.org::*- dired][- dired]]                     |                              |                          |                          |
+| [[file:README.org::*WINDOWS FRAMES COMMANDS][WINDOWS FRAMES COMMANDS]]     |                              |                          |                          |
+| [[file:README.org::*- kill_frame][- kill_frame]]                |                              |                          |                          |
+| [[file:README.org::*- delete_window][- delete_window]]             |                              |                          |                          |
+| [[file:README.org::*- split_window][- split_window]]              |                              |                          |                          |
+| [[file:README.org::*- next_window][- next_window]]               |                              |                          |                          |
+| [[file:README.org::*- previous_window][- previous_window]]           |                              |                          |                          |
+| [[file:README.org::*- suspend_frame][- suspend_frame]]             |                              |                          |                          |
+| [[file:README.org::*ADD HOOKS][ADD HOOKS]]                   |                              |                          |                          |
+| [[file:README.org::*ADD IGNORE FRAMES][ADD IGNORE FRAMES]]           |                              |                          |                          |
+| [[file:README.org::*ADD GENERIC GOTO LINE][ADD GENERIC GOTO LINE]]       |                              |                          |                          |
+| [[file:README.org::*ADD KILL RING][ADD KILL RING]]               |                              |                          |                          |
+| [[file:README.org::*ADD MOUSE EVENTS][ADD MOUSE EVENTS]]            |                              |                          |                          |
+| [[file:README.org::*ADD C-X][ADD C-X]]                     |                              |                          |                          |
+| [[file:README.org::*EXTRA ERGO PRESET SELECTION][EXTRA ERGO PRESET SELECTION]] |                              |                          |                          |
+| [[file:README.org::*EXTRA][EXTRA]]                       |                              |                          |                          |
+| [[file:README.org::*- ctrl_mapping][- ctrl_mapping]]              |                              |                          |                          |
 #+end:
 
-** Whats New Version 0.2.0 <2024-06-26>
+* Whats New Version 0.2.0 <2024-06-26>
 
 This commit introduces several new functions to enhance the usability and
 functionality of the `commands.ahk` script. Notable additions include:
@@ -133,49 +134,49 @@ functionality of the `commands.ahk` script. Notable additions include:
 - Update to `kill_ring_save` to include an escape key press, ensuring a more comprehensive cleanup post-operation.
 - Improved the README.org kanban to more easily differentiate between command sections and to define those commands I am not implementing (IGNORE) and those additional commands (EXTRA)
 
-** Usage
+* Usage
 
 1. **Install AutoHotKey**: Download and install AutoHotKey from [AutoHotKey's official website](https://www.autohotkey.com/).
 2. **Run WOWEE**: Double-click on the `wowee.ahk` script to start WOWEE. Once running, Emacs commands will be available in your Windows environment.
 3. **Quit WOWEE**: To quit WOWEE, right-click the AutoHotKey icon in the task tray and select "Exit."
 
-** Configuration
+* Configuration
 
 WOWEE is composed of several AutoHotKey scripts, each serving a specific purpose to replicate Emacs functionalities:
 
-*** fundamental.ahk
+** fundamental.ahk
 
 This script provides a set of fundamental functions and variables that are used to implement Emacs-like commands and keybindings.
 
-*** commands.ahk
+** commands.ahk
 
 This script includes the basic implementation of Emacs commands.
 
-*** commands_util.ahk
+** commands_util.ahk
 
 This script contains simple utility functions used by the command scripts.
 
-*** keybinds.ahk
+** keybinds.ahk
 
 This script defines the default keybindings for Emacs-like commands.
 
-** Installation and Setup
+* Installation and Setup
 
 1. **Download WOWEE**: Download the WOWEE scripts from the repository.
 2. **Extract Files**: Extract the files to a directory of your choice.
 3. **Run the Script**: Double-click `wowee.ahk` to start using WOWEE.
 
-** Customization
+* Customization
 
-*** Editing Keybindings
+** Editing Keybindings
 
 You can customize the keybindings by editing the `keybinds.ahk` file. Open the file in any text editor and modify the keybindings according to your preferences. Refer to the AutoHotKey documentation for the syntax and available key options.
 
-*** Adding New Commands
+** Adding New Commands
 
 To add new commands, you can edit the `commands.ahk` and `commands_util.ahk` files. Define your new commands and utility functions, and then bind them to keys in `keybinds.ahk`.
 
-** Troubleshooting
+* Troubleshooting
 
 If you encounter any issues while using WOWEE, try the following steps:
 
@@ -183,7 +184,7 @@ If you encounter any issues while using WOWEE, try the following steps:
 2. **Script Errors**: If there are errors in the script, AutoHotKey will usually display a message with details. Use this information to debug and fix the issue.
 3. **Conflicting Programs**: Some programs might have conflicting keybindings. Try closing other programs to see if the issue is resolved.
 
-** Contributing
+* Contributing
 
 Contributions to WOWEE are welcome! If you have suggestions for improvements or want to add new features, feel free to submit a pull request.
 
@@ -193,15 +194,15 @@ Contributions to WOWEE are welcome! If you have suggestions for improvements or 
 4. Push to the branch (`git push origin feature/YourFeature`)
 5. Create a new pull request
 
-** License
+* License
 
 WOWEE is licensed under the MIT License. See the LICENSE file for more details.
 
-** Acknowledgements
+* Acknowledgements
 
 Special thanks to the creators of AutoHotKey and the Emacs community for their inspiration and contributions to keyboard efficiency.
 
-** Contact
+* Contact
 
 For any questions or issues, please open an issue on the GitHub repository or contact the maintainer at [email@example.com].
 
@@ -211,8 +212,6 @@ Enjoy using WOWEE and bring the power of Emacs navigation to your Windows experi
 
 * ROADMAP
 
-** TODO EXTRA ERGO PRESET SELECTION
-** TODO ADD PROGRAM SPECIFIC PRESETS
 ** DONE MOTION COMMANDS
 *** DONE - forward_char
 *** DONE - backward_char
@@ -305,5 +304,7 @@ Enjoy using WOWEE and bring the power of Emacs navigation to your Windows experi
 *** DOING - isearch_forwards
 *** DOING - recenter_line
 *** DOING - indent_line
+** DOING ADD PROGRAM SPECIFIC PRESETS
+** TODO EXTRA ERGO PRESET SELECTION
 ** TODO EXTRA
 *** TODO - ctrl_mapping
