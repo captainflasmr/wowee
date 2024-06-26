@@ -15,6 +15,7 @@ RAlt::Control
 !w::kill_ring_save()
 !+'::set_mark_command()
 !'::set_mark_command()
+!bs::backward_kill_word()
 
 ;; -----------
 ;; M- ergo bindings
@@ -39,19 +40,27 @@ RAlt::Control
 ^p::previous_line()
 ^f::forward_char()
 ^e::move_end_of_line()
+^+e::move_end_of_line()
 ^a::move_beginning_of_line()
+^+a::move_beginning_of_line()
 ^d::delete_char()
 ^v::scroll_down()
 ^y::yank()
 ^/::undo_only()
 ^k::kill_line()
-^+g::quit()
-^g::quit()
+^+g::quit_g()
+^g::quit_g()
+^i::indent_line()
+^+i::indent_line()
+^l::recenter_line()
+^r::isearch_backward()
+^s::isearch_forward()
+^+space::set_mark_command()
+^space::set_mark_command()
 
 ;; -----------
 ;; C- disables
 ;; -----------
-^s::return
 ^+c::return
 
 
@@ -59,7 +68,7 @@ RAlt::Control
 ;; M-s bindings
 ;; -----------
 !s:: {
-        hook := InputHook("L1", "{[}{]}")
+        hook := InputHook("L1", "{[}{]}{,}")
         hook.Start()
         hook.Wait()
         if (hook.EndKey == "[") {
@@ -67,6 +76,9 @@ RAlt::Control
         }
         if (hook.EndKey == "]") {
                 end_of_buffer()
+        }
+        if (hook.EndKey == ",") {
+                select_line()
         }
         hook := ""
 }
@@ -80,6 +92,19 @@ RAlt::Control
         hook.Wait()
         if (hook.EndKey == "s") {
                 save_buffer()
+        }
+        hook := ""
+}
+
+;; -----------
+;; M-g bindings
+;; -----------
+!g:: {
+        hook := InputHook("L1", "{g}")
+        hook.Start()
+        hook.Wait()
+        if (hook.EndKey == "g") {
+                goto_line()
         }
         hook := ""
 }

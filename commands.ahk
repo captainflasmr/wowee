@@ -3,6 +3,51 @@
 #Include commands_util.ahk
 
 global selecting := false
+global searching := false
+
+isearch_backward() {
+        global searching
+        if (searching) {
+                command_simple("{Shift down}{F3}{Shift up}", 1, 1)
+        }
+        else {
+                searching := true
+                command_simple("^p^r", 1, 1)
+        }
+}
+
+isearch_forward() {
+        global searching
+        if (searching) {
+                command_simple("{F3}", 1, 1)
+        }
+        else {
+                searching := true
+                command_simple("^p^s", 1, 1)
+        }
+}
+
+recenter_line() {
+    command_simple("^p^l", 1, 1)
+}
+
+indent_line() {
+    select_line()
+    command_simple("^p^f", 1, 1)
+    quit_g()
+}
+
+backward_kill_word() {
+    command_simple("^{BS}", 1, 1)
+}
+
+select_line() {
+    command_simple("{Home}{Shift down}{End}{Shift up}", 1, 0)
+}
+
+goto_line() {
+        command_simple("^g", 0, 1)
+}
 
 set_mark_command() {
         global selecting
@@ -20,6 +65,13 @@ quit() {
         global selecting
         selecting := false
         command_simple("{Shift up}", 0, 1)
+}
+
+quit_g() {
+        global selecting, searching
+        selecting := false
+        searching := false
+        command_simple("{Shift up}{Escape}", 0, 1)
 }
 
 ;; --------
@@ -47,7 +99,7 @@ next_line() {
 }
 
 next_lines() {
-    command_motion("{Down}", 3)
+    command_motion("{Down}", 6)
 }
 
 previous_line() {
@@ -55,7 +107,7 @@ previous_line() {
 }
 
 previous_lines() {
-    command_motion("{Up}", 3)
+    command_motion("{Up}", 6)
 }
 
 ;; --------------
@@ -100,7 +152,7 @@ delete_char() {
 
 kill_ring_save() {
         quit()
-        command_simple("^c", 1, 1)
+        command_simple("^c{Escape}", 1, 1)
 }
 
 kill_line() {
