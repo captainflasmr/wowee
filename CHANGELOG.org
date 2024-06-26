@@ -13,24 +13,17 @@ With a roadmap and issues also supplied
 
 * Whats New
 
-Version 0.2.0
+** Version 0.2.0 <2024-06-26>
 
 This commit introduces several new functions to enhance the usability and
 functionality of the `commands.ahk` script. Notable additions include:
 
-- Implementation of `isearch_backward` and `isearch_forward` functions for
-  improved search capabilities, allowing for backwards and forwards in-document
-  searches with initialization and continuation logic.
-- Addition of `recenter_line`, `indent_line`, and `backward_kill_word`
-  functions to enrich text editing commands.
-- Enhancement of `select_line` and `goto_line` functions for better line
-  selection and navigation.
-- The `quit_g` function extends quitting capabilities to also reset the
-  `selecting` and `searching` states.
-- Modifications to `next_lines` and `previous_lines` to increase the number of
-  lines navigated with each command from 3 to 6, improving scroll efficiency.
-- Update to `kill_ring_save` to include an escape key press, ensuring a more
-  comprehensive cleanup post-operation.
+- Implementation of `isearch_backward` and `isearch_forward` functions for improved search capabilities, allowing for backwards and forwards in-document searches with initialization and continuation logic.
+- Addition of `recenter_line`, `indent_line`, and `backward_kill_word` functions to enrich text editing commands.
+- Enhancement of `select_line` and `goto_line` functions for better line selection and navigation.
+- The `quit_g` function extends quitting capabilities to also reset the `selecting` and `searching` states.
+- Modifications to `next_lines` and `previous_lines` to increase the number of lines navigated with each command from 3 to 6, improving scroll efficiency.
+- Update to `kill_ring_save` to include an escape key press, ensuring a more comprehensive cleanup post-operation.
 - Improved the README.org kanban to more easily differentiate between command sections and to define those commands I am not implementing (IGNORE) and those additional commands (EXTRA)
 
 * ISSUES
@@ -39,7 +32,7 @@ NONE
 
 * Versions
 
-** 0.1.0 on <2024-06-19>
+** Version 0.1.0 <2024-06-19>
 
 Initial version
 
