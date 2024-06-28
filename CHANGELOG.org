@@ -11,7 +11,18 @@ project's main git repository: [[https://github.com/captainflasmr/wowee]].
 
 With a roadmap and issues also supplied
 
-* Whats New
+* Versions
+
+** Version 0.3.0 <2024-06-28>
+
+This commit has split out ahk files into apps, core and init:
+- Added comment-line
+- Added mark-whole-buffer
+- Refined isearch
+- Added application specific bindings in keybinds-apps.ahk for Visual Studio and VSCode
+- Update README to reflect design changes
+- Added beginning_of_buffer and end_of_buffer core mappings
+- Added mark_whole_buffer core mapping
 
 ** Version 0.2.0 <2024-06-26>
 
@@ -26,16 +37,14 @@ functionality of the `commands.ahk` script. Notable additions include:
 - Update to `kill_ring_save` to include an escape key press, ensuring a more comprehensive cleanup post-operation.
 - Improved the README.org kanban to more easily differentiate between command sections and to define those commands I am not implementing (IGNORE) and those additional commands (EXTRA)
 
-* ISSUES
-
-NONE
-
-* Versions
-
 ** Version 0.1.0 <2024-06-19>
 
 Initial version
 
+* ISSUES
+
+NONE
+
 * Testing
 
-Run wowee.ahk on Windows and perform emacs like commands.
+Run wowee.ahk on Windows and perform emacs like commands in various applications.
