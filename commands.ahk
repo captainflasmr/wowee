@@ -5,25 +5,22 @@
 global selecting := false
 global searching := false
 
-isearch_backward() {
-        global searching
-        if (searching) {
-                command_simple("{Shift down}{F3}{Shift up}", 1, 1)
-        }
-        else {
-                searching := true
-                command_simple("^p^r", 1, 1)
-        }
+comment_line(cmd) {
+        command_simple(cmd, 1, 1)
 }
 
-isearch_forward() {
+mark_whole_buffer() {
+        command_simple("^a", 1, 1)
+}
+
+isearch(start_cmd, next_cmd) {
         global searching
-        if (searching) {
-                command_simple("{F3}", 1, 1)
+        if (!searching) {
+                searching := true
+                command_simple(start_cmd, 1, 1)
         }
         else {
-                searching := true
-                command_simple("^p^s", 1, 1)
+                command_simple(next_cmd, 1, 1)
         }
 }
 

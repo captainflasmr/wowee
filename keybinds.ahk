@@ -50,11 +50,8 @@ RAlt::Control
 ^k::kill_line()
 ^+g::quit_g()
 ^g::quit_g()
-^i::indent_line()
-^+i::indent_line()
-^l::recenter_line()
-^r::isearch_backward()
-^s::isearch_forward()
+^r::isearch_backward("^f")
+^s::isearch_forward("^f")
 ^+space::set_mark_command()
 ^space::set_mark_command()
 
@@ -109,5 +106,21 @@ RAlt::Control
         hook := ""
 }
 
+;; -------------
+;; Visual Studio
+;; -------------
+;; Shortcut rebindings:
+;;
+;; Control+p Control+s : Text Editor : Incremental Search
+;; Control+p Control+r : Text Editor : Incremental Search Reverse
+;; Control+p Control+l : Text Editor : Scroll Recenter
+;; Control+p Control+f : Text Editor : Format selection
+
+#HotIf WinActive("ahk_class VisualStudio")
+^r::isearch_backward("{Shift down}{F3}{Shift up}" "^p^r")
+^s::isearch_forward("{F3}" "^p^s")
+^l::recenter_line()
+^i::indent_line()
+^+i::indent_line()
 
 #HotIf
