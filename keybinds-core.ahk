@@ -37,6 +37,7 @@
 ^s::isearch("^f", "{Enter}")
 ^+space::set_mark_command()
 ^space::set_mark_command()
+^z::suspend_frame()
 
 ;; -----------
 ;; C- disables
@@ -47,7 +48,7 @@
 ;; C-x bindings
 ;; -----------
 ^x:: {
-        hook := InputHook("L1", "{s}{h}")
+        hook := InputHook("L1", "{s}{h}{o}{c}{1}{3}")
         hook.Start()
         hook.Wait()
         if (hook.EndKey == "s") {
@@ -55,6 +56,18 @@
         }
         if (hook.EndKey == "h") {
                 mark_whole_buffer()
+        }
+        if (hook.EndKey == "o") {
+                next_window()
+        }
+        if (hook.EndKey == "c") {
+                kill_frame()
+        }
+        if (hook.EndKey == "1") {
+                maximize_window()
+        }
+        if (hook.EndKey == "3") {
+                split_window_vertically()
         }
 
         hook := ""

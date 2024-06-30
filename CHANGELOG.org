@@ -13,6 +13,17 @@ With a roadmap and issues also supplied
 
 * Versions
 
+** Version 0.3.1 <2024-06-30>
+
+This commit has added windows, frames support
+
+- kill frame (C-x c)
+- split window vertically (C-x 3)
+- maximize window (C-x 1)
+- next window (C-x o)
+- suspend frame (C-z)
+- reorganisation of kanban
+
 ** Version 0.3.0 <2024-06-28>
 
 This commit has split out ahk files into apps, core and init:

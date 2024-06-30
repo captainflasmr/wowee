@@ -5,46 +5,9 @@
 global selecting := false
 global searching := false
 
-comment_line(cmd) {
-        command_simple(cmd, 1, 1)
-}
-
-mark_whole_buffer() {
-        command_simple("^a", 1, 1)
-}
-
-isearch(start_cmd, next_cmd) {
-        global searching
-        if (!searching) {
-                searching := true
-                command_simple(start_cmd, 1, 1)
-        }
-        else {
-                command_simple(next_cmd, 1, 1)
-        }
-}
-
-recenter_line() {
-    command_simple("^p^l", 1, 1)
-}
-
-indent_line() {
-    select_line()
-    command_simple("^p^f", 1, 1)
-    quit_g()
-}
-
-backward_kill_word() {
-    command_simple("^{BS}", 1, 1)
-}
-
-select_line() {
-    command_simple("{Home}{Shift down}{End}{Shift up}", 1, 0)
-}
-
-goto_line() {
-        command_simple("^g", 0, 1)
-}
+;; ------
+;; system
+;; ------
 
 set_mark_command() {
         global selecting
@@ -69,6 +32,46 @@ quit_g() {
         selecting := false
         searching := false
         command_simple("{Shift up}{Escape}", 0, 1)
+}
+
+;; -----
+;; files
+;; -----
+
+save_buffer() {
+    command_simple("^s", 0, 0)
+}
+
+;; ---------------
+;; windows, frames
+;; ---------------
+
+kill_frame() {
+    command_simple("!{F4}", 0, 0)
+}
+
+delete_window() {
+    command_simple("^{F4}", 0, 1)
+}
+
+split_window_vertically() {
+    command_simple("^p^3", 0, 1)
+}
+
+maximize_window() {
+    command_simple("#{Up}", 0, 1)
+}
+
+next_window() {
+    command_simple("!{Tab}", 0, 1)
+}
+
+previous_window() {
+    command_simple("!+{Tab}", 0, 1)
+}
+
+suspend_frame() {
+    command_simple("#{Down}", 0, 0)
 }
 
 ;; --------
@@ -111,6 +114,10 @@ previous_lines() {
 ;; jumping around
 ;; --------------
 
+goto_line() {
+        command_simple("^g", 0, 1)
+}
+
 scroll_down() {
     command_motion("{PgDn}", 1)
 }
@@ -135,17 +142,21 @@ end_of_buffer() {
     command_motion("^{End}", 0)
 }
 
-;; --------
-;; deleting
-;; --------
-
-delete_char() {
-    command_simple("{Del}", 1, 1)
-}
-
 ;; ------
 ;; region
 ;; ------
+
+select_line() {
+    command_simple("{Home}{Shift down}{End}{Shift up}", 1, 0)
+}
+
+backward_kill_word() {
+    command_simple("^{BS}", 1, 1)
+}
+
+mark_whole_buffer() {
+        command_simple("^a", 1, 1)
+}
 
 kill_ring_save() {
         quit()
@@ -160,22 +171,50 @@ yank() {
     command_simple("^v", 1, 1)
 }
 
+;; --------
+;; deleting
+;; --------
+
+delete_char() {
+    command_simple("{Del}", 1, 1)
+}
+
+;; ------------------
+;; newline and indent
+;; ------------------
+
+recenter_line() {
+    command_simple("^p^l", 1, 1)
+}
+
+indent_line() {
+    select_line()
+    command_simple("^p^f", 1, 1)
+    quit_g()
+}
+
 ;; -------------
 ;; edit commands
 ;; -------------
+
+isearch(start_cmd, next_cmd) {
+        global searching
+        if (!searching) {
+                searching := true
+                command_simple(start_cmd, 1, 1)
+        }
+        else {
+                command_simple(next_cmd, 1, 1)
+        }
+}
 
 undo_only() {
     command_simple("^z", 1, 1)
 }
 
-;; -----
-;; files
-;; -----
-
-save_buffer() {
-    command_simple("^s", 0, 0)
+;; ---------------
+;; inserting pairs
+;; ---------------
+comment_line(cmd) {
+        command_simple(cmd, 1, 1)
 }
-
-;; ------
-;; system
-;; ------

@@ -16,6 +16,18 @@ WOWEE is a set of AutoHotKey scripts designed to bring Emacs-like commands and k
 
 * Whats New
 
+** Version 0.3.1 <2024-06-30>
+
+This commit has added windows, frames support
+
+- kill frame (C-x c)
+- split window vertically (C-x 3)
+- maximize window (C-x 1)
+- next window (C-x o)
+- suspend frame (C-z)
+- reorganisation of kanban
+- reorganisation of commands.ahk to better group
+
 ** Version 0.3.0 <2024-06-28>
 
 This commit has split out ahk files into apps, core and init:
@@ -53,11 +65,23 @@ Initial version
 - Includes various Emacs style navigation commands
 - Ergonomic keyboard layout options
 - Easily add your own keybindings by modifying AHK source files
-- *Bindings bespoke to individual applications*
+- =(a) Bindings bespoke to individual applications=
 
-** My current thoughts
+** Foibles
 
-*** Bindings bespoke to individual applications
+1. I have yet to implement C-x C-<key> but these functions, for example like save-buffer (C-x C-s) and save-buffers-kill-terminal (C-x C-z) are still accessible, but without the second Control, for example C-x s and C-x z
+2. Any application shortcut re-mappings are using the convention C-p C-<key>, this is temporary as I never use C-p (print) and though this would be a good unique leader key combination.
+
+** Applications
+
+The applications I am currently looking to support are the following:
+- Visual Studio
+- VSCode
+- NotePad++
+
+** Development
+
+*** =(a) Bindings bespoke to individual applications=
 
 - I am playing around with the idea of application specific bindings within the keybinds.ahk file, for example something like :
 
@@ -98,55 +122,68 @@ The IGNORE column includes functions that I am definitely not going to implement
 
 The EXTRA section are additional commands that I am adding.
 
+There is a prefix type indicator for each command referring to the specific type:
+
+(C) - Core Emacs commands
+(VS) - Visual Studio specific
+(VC) - VSCode specific
+(N++) - NotePad++ specific
+(E) - Extra
+
+and any command with an asterisk is an unconventional Emacs keybinding which will probably get fixed sometime in the future!
+
 #+begin: kanban :layout ("..." . 50) :scope nil :range ("TODO" . "IGNORE") :sort "O" :depth 3 :compressed t
-| TODO                             | DOING                        | DONE                         | IGNORE                        |
-|----------------------------------+------------------------------+------------------------------+-------------------------------|
-| [[file:README.org::*CORE REGION COMMANDS][CORE REGION COMMANDS]]             | [[file:README.org::*---- VISUAL STUDIO ----][---- VISUAL STUDIO ----]]      | [[file:README.org::*CORE MOTION COMMANDS][CORE MOTION COMMANDS]]         | [[file:README.org::*- scroll_left][- scroll_left]]                 |
-| [[file:README.org::*- mark_word][- mark_word]]                      | [[file:README.org::*- recenter_line][- recenter_line]]              | [[file:README.org::*- forward_char][- forward_char]]               | [[file:README.org::*- scroll_right][- scroll_right]]                |
-| [[file:README.org::*- kill_region][- kill_region]]                    | [[file:README.org::*- indent_line][- indent_line]]                | [[file:README.org::*- backward_char][- backward_char]]              | [[file:README.org::*- open_line][- open_line]]                   |
-| [[file:README.org::*- yank_pop][- yank_pop]]                       | [[file:README.org::*---- VSCODE ----][---- VSCODE ----]]             | [[file:README.org::*- forward_word][- forward_word]]               | [[file:README.org::*- transpose_chars][- transpose_chars]]             |
-| [[file:README.org::*- delete_backward_char][- delete_backward_char]]           | [[file:README.org::*- isearch_backwards][- isearch_backwards]]          | [[file:README.org::*- backward_word][- backward_word]]              | [[file:README.org::*- transpose_words][- transpose_words]]             |
-| [[file:README.org::*- kill_word][- kill_word]]                      | [[file:README.org::*- isearch_forwards][- isearch_forwards]]           | [[file:README.org::*- next_line][- next_line]]                  | [[file:README.org::*- transpose_lines][- transpose_lines]]             |
-| [[file:README.org::*- kill_whole_line][- kill_whole_line]]                | [[file:README.org::*ADD PROGRAM SPECIFIC PRESETS][ADD PROGRAM SPECIFIC PRESETS]] | [[file:README.org::*- previous_line][- previous_line]]              | [[file:README.org::*CORE CASE CONVERSION COMMANDS][CORE CASE CONVERSION COMMANDS]] |
-| [[file:README.org::*CORE NEWLINE AND INDENT COMMANDS][CORE NEWLINE AND INDENT COMMANDS]] |                              | [[file:README.org::*CORE JUMPING AROUND COMMANDS][CORE JUMPING AROUND COMMANDS]] | [[file:README.org::*- upcase_region][- upcase_region]]               |
-| [[file:README.org::*- newline][- newline]]                        |                              | [[file:README.org::*- scroll_down][- scroll_down]]                | [[file:README.org::*- downcase_region][- downcase_region]]             |
-| [[file:README.org::*- delete_indentation][- delete_indentation]]             |                              | [[file:README.org::*- scroll_up][- scroll_up]]                  | [[file:README.org::*- upcase_word][- upcase_word]]                 |
-| [[file:README.org::*CORE EDIT COMMANDS][CORE EDIT COMMANDS]]               |                              | [[file:README.org::*- move_beginning_of_line][- move_beginning_of_line]]     | [[file:README.org::*- downcase_word][- downcase_word]]               |
-| [[file:README.org::*- redo][- redo]]                           |                              | [[file:README.org::*- move_end_of_line][- move_end_of_line]]           | [[file:README.org::*- capitalize_word][- capitalize_word]]             |
-| [[file:README.org::*- query_replace][- query_replace]]                  |                              | [[file:README.org::*- beginning_of_buffer][- beginning_of_buffer]]        | [[file:README.org::*CORE MACRO RECORDING COMMANDS][CORE MACRO RECORDING COMMANDS]] |
-| [[file:README.org::*- overwrite_mode][- overwrite_mode]]                 |                              | [[file:README.org::*- end_of_buffer][- end_of_buffer]]              | [[file:README.org::*CORE ADD IGNORE FRAMES][CORE ADD IGNORE FRAMES]]        |
-| [[file:README.org::*CORE INSERT PAIRS COMMANDS][CORE INSERT PAIRS COMMANDS]]       |                              | [[file:README.org::*- goto_line][- goto_line]]                  | [[file:README.org::*CORE ADD MOUSE EVENTS][CORE ADD MOUSE EVENTS]]         |
-| [[file:README.org::*- insert_parentheses][- insert_parentheses]]             |                              | [[file:README.org::*- mark_whole_line][- mark_whole_line]]            |                               |
-| [[file:README.org::*- insert_comment][- insert_comment]]                 |                              | [[file:README.org::*- mark_whole_buffer][- mark_whole_buffer]]          |                               |
-| [[file:README.org::*- indent_new_comment_line][- indent_new_comment_line]]        |                              | [[file:README.org::*- kill_ring_save][- kill_ring_save]]             |                               |
-| [[file:README.org::*CORE OTHER COMMANDS][CORE OTHER COMMANDS]]              |                              | [[file:README.org::*- yank][- yank]]                       |                               |
-| [[file:README.org::*- shell][- shell]]                          |                              | [[file:README.org::*- delete_char][- delete_char]]                |                               |
-| [[file:README.org::*- shell_command][- shell_command]]                  |                              | [[file:README.org::*- backward_kill_word][- backward_kill_word]]         |                               |
-| [[file:README.org::*- facemenu][- facemenu]]                       |                              | [[file:README.org::*- kill_line][- kill_line]]                  |                               |
-| [[file:README.org::*- help][- help]]                           |                              | [[file:README.org::*- indent_for_tab_command][- indent_for_tab_command]]     |                               |
-| [[file:README.org::*CORE SYSTEM COMMANDS][CORE SYSTEM COMMANDS]]             |                              | [[file:README.org::*- undo_only][- undo_only]]                  |                               |
-| [[file:README.org::*- ignore][- ignore]]                         |                              | [[file:README.org::*- search_forward][- search_forward]]             |                               |
-| [[file:README.org::*- repeat][- repeat]]                         |                              | [[file:README.org::*- search_backward][- search_backward]]            |                               |
-| [[file:README.org::*CORE DIGIT ARGUMENT COMMANDS][CORE DIGIT ARGUMENT COMMANDS]]     |                              | [[file:README.org::*- set_mark_command][- set_mark_command]]           |                               |
-| [[file:README.org::*CORE FILES COMMANDS][CORE FILES COMMANDS]]              |                              | [[file:README.org::*- set_cx_command][- set_cx_command]]             |                               |
-| [[file:README.org::*- write_file][- write_file]]                     |                              | [[file:README.org::*- keyboard_quit][- keyboard_quit]]              |                               |
-| [[file:README.org::*- find_file][- find_file]]                      |                              | [[file:README.org::*- save_buffer][- save_buffer]]                |                               |
-| [[file:README.org::*- dired][- dired]]                          |                              | [[file:README.org::*CORE ADD C-X][CORE ADD C-X]]                 |                               |
-| [[file:README.org::*CORE WINDOWS FRAMES COMMANDS][CORE WINDOWS FRAMES COMMANDS]]     |                              | [[file:README.org::*- isearch_backwards][- isearch_backwards]]          |                               |
-| [[file:README.org::*- kill_frame][- kill_frame]]                     |                              | [[file:README.org::*- isearch_forwards][- isearch_forwards]]           |                               |
-| [[file:README.org::*- delete_window][- delete_window]]                  |                              | [[file:README.org::*- comment_line][- comment_line]]               |                               |
-| [[file:README.org::*- split_window][- split_window]]                   |                              | [[file:README.org::*- comment_line][- comment_line]]               |                               |
-| [[file:README.org::*- next_window][- next_window]]                    |                              |                              |                               |
-| [[file:README.org::*- previous_window][- previous_window]]                |                              |                              |                               |
-| [[file:README.org::*- suspend_frame][- suspend_frame]]                  |                              |                              |                               |
-| [[file:README.org::*CORE ADD HOOKS][CORE ADD HOOKS]]                   |                              |                              |                               |
-| [[file:README.org::*ADD GENERIC GOTO LINE][ADD GENERIC GOTO LINE]]            |                              |                              |                               |
-| [[file:README.org::*CORE ADD KILL RING][CORE ADD KILL RING]]               |                              |                              |                               |
-| [[file:README.org::*- recenter_line][- recenter_line]]                  |                              |                              |                               |
-| [[file:README.org::*- indent_line][- indent_line]]                    |                              |                              |                               |
-| [[file:README.org::*EXTRA ERGO PRESET SELECTION][EXTRA ERGO PRESET SELECTION]]      |                              |                              |                               |
-| [[file:README.org::*EXTRA][EXTRA]]                            |                              |                              |                               |
-| [[file:README.org::*- ctrl_mapping][- ctrl_mapping]]                   |                              |                              |                               |
+| TODO                            | DOING                          | DONE                               | IGNORE                          |
+|---------------------------------+--------------------------------+------------------------------------+---------------------------------|
+| [[file:README.org::*(C) REGION COMMANDS][(C) REGION COMMANDS]]             | [[file:README.org::*(VS) VISUAL STUDIO][(VS) VISUAL STUDIO]]             | [[file:README.org::*(C) MOTION COMMANDS][(C) MOTION COMMANDS]]                | [[file:README.org::*(C) JUMPING AROUND COMMANDS][(C) JUMPING AROUND COMMANDS]]     |
+| [[file:README.org::*- (C) mark_word][- (C) mark_word]]                 | [[file:README.org::*- (VS) recenter_line (C-l)][- (VS) recenter_line (C-l)]]     | [[file:README.org::*- (C) forward_char (C-f)][- (C) forward_char (C-f)]]           | [[file:README.org::*- (C) scroll_left][- (C) scroll_left]]               |
+| [[file:README.org::*- (C) yank_pop][- (C) yank_pop]]                  | [[file:README.org::*- (VS) indent_line (C-i)][- (VS) indent_line (C-i)]]       | [[file:README.org::*- (C) backward_char (C-b)][- (C) backward_char (C-b)]]          | [[file:README.org::*- (C) scroll_right][- (C) scroll_right]]              |
+| [[file:README.org::*- (C) kill_region][- (C) kill_region]]               | [[file:README.org::*(VC) VSCODE][(VC) VSCODE]]                    | [[file:README.org::*- (C) forward_word (M-f)][- (C) forward_word (M-f)]]           | [[file:README.org::*(C) NEWLINE AND INDENT COMMANDS][(C) NEWLINE AND INDENT COMMANDS]] |
+| [[file:README.org::*- (C) delete_backward_char][- (C) delete_backward_char]]      | [[file:README.org::*- (VC) isearch_backwards (C-r)][- (VC) isearch_backwards (C-r)]] | [[file:README.org::*- (C) backward_word (M-b)][- (C) backward_word (M-b)]]          | [[file:README.org::*- (C) open_line][- (C) open_line]]                 |
+| [[file:README.org::*- (C) kill_word][- (C) kill_word]]                 | [[file:README.org::*- (VC) isearch_forwards (C-s)][- (VC) isearch_forwards (C-s)]]  | [[file:README.org::*- (C) next_line (C-n)][- (C) next_line (C-n)]]              | [[file:README.org::*(C) EDIT COMMANDS][(C) EDIT COMMANDS]]               |
+| [[file:README.org::*- (C) kill_whole_line][- (C) kill_whole_line]]           | [[file:README.org::*(E) PROGRAM SPECIFIC PRESETS][(E) PROGRAM SPECIFIC PRESETS]]   | [[file:README.org::*- (C) previous_line (C-p)][- (C) previous_line (C-p)]]          | [[file:README.org::*- (C) transpose_chars][- (C) transpose_chars]]           |
+| [[file:README.org::*(C) NEWLINE AND INDENT COMMANDS][(C) NEWLINE AND INDENT COMMANDS]] |                                | [[file:README.org::*(C) JUMPING AROUND COMMANDS][(C) JUMPING AROUND COMMANDS]]        | [[file:README.org::*- (C) transpose_words][- (C) transpose_words]]           |
+| [[file:README.org::*- (C) newline][- (C) newline]]                   |                                | [[file:README.org::*- (C) scroll_down (C-v)][- (C) scroll_down (C-v)]]            | [[file:README.org::*- (C) transpose_lines][- (C) transpose_lines]]           |
+| [[file:README.org::*- (C) delete_indentation][- (C) delete_indentation]]        |                                | [[file:README.org::*- (C) scroll_up (M-v)][- (C) scroll_up (M-v)]]              | [[file:README.org::*(C) CASE CONVERSION COMMANDS][(C) CASE CONVERSION COMMANDS]]    |
+| [[file:README.org::*(C) EDIT COMMANDS][(C) EDIT COMMANDS]]               |                                | [[file:README.org::*- (C) move_beginning_of_line (C-a)][- (C) move_beginning_of_line (C-a)]] | [[file:README.org::*- (C) upcase_region][- (C) upcase_region]]             |
+| [[file:README.org::*- (C) redo][- (C) redo]]                      |                                | [[file:README.org::*- (C) move_end_of_line (C-e)][- (C) move_end_of_line (C-e)]]       | [[file:README.org::*- (C) downcase_region][- (C) downcase_region]]           |
+| [[file:README.org::*- (C) query_replace][- (C) query_replace]]             |                                | [[file:README.org::*- (C) beginning_of_buffer (M-<)][- (C) beginning_of_buffer (M-<)]]    | [[file:README.org::*- (C) upcase_word][- (C) upcase_word]]               |
+| [[file:README.org::*- (C) overwrite_mode][- (C) overwrite_mode]]            |                                | [[file:README.org::*- (C) end_of_buffer (M->)][- (C) end_of_buffer (M->)]]          | [[file:README.org::*- (C) downcase_word][- (C) downcase_word]]             |
+| [[file:README.org::*- (E) isearch-yank-word-or-char][- (E) isearch-yank-word-or-char]] |                                | [[file:README.org::*- (C) goto_line (M-g g)][- (C) goto_line (M-g g)]]            | [[file:README.org::*- (C) capitalize_word][- (C) capitalize_word]]           |
+| [[file:README.org::*(C) INSERT PAIRS COMMANDS][(C) INSERT PAIRS COMMANDS]]       |                                | [[file:README.org::*(C) REGION COMMANDS][(C) REGION COMMANDS]]                | [[file:README.org::*(C) MACRO RECORDING COMMANDS][(C) MACRO RECORDING COMMANDS]]    |
+| [[file:README.org::*- (C) insert_parentheses][- (C) insert_parentheses]]        |                                | [[file:README.org::*- (E) mark_whole_line (M-s ,)][- (E) mark_whole_line (M-s ,)]]      | [[file:README.org::*(C) ADD IGNORE FRAMES][(C) ADD IGNORE FRAMES]]           |
+| [[file:README.org::*- (C) insert_comment][- (C) insert_comment]]            |                                | [[file:README.org::*- (C) mark_whole_buffer (C-x h)][- (C) mark_whole_buffer (C-x h)]]    | [[file:README.org::*(C) ADD MOUSE EVENTS][(C) ADD MOUSE EVENTS]]            |
+| [[file:README.org::*- (C) indent_new_comment_line][- (C) indent_new_comment_line]]   |                                | [[file:README.org::*- (C) kill_ring_save (M-w)][- (C) kill_ring_save (M-w)]]         |                                 |
+| [[file:README.org::*(C) OTHER COMMANDS][(C) OTHER COMMANDS]]              |                                | [[file:README.org::*- (C) yank (C-y)][- (C) yank (C-y)]]                   |                                 |
+| [[file:README.org::*- (C) shell][- (C) shell]]                     |                                | [[file:README.org::*- (C) delete_char (C-d)][- (C) delete_char (C-d)]]            |                                 |
+| [[file:README.org::*- (C) shell_command][- (C) shell_command]]             |                                | [[file:README.org::*- (C) backward_kill_word (M-BKSP)][- (C) backward_kill_word (M-BKSP)]]  |                                 |
+| [[file:README.org::*- (C) facemenu][- (C) facemenu]]                  |                                | [[file:README.org::*- (C) kill_line (C-k)][- (C) kill_line (C-k)]]              |                                 |
+| [[file:README.org::*- (C) help][- (C) help]]                      |                                | [[file:README.org::*(C) NEWLINE AND INDENT COMMANDS][(C) NEWLINE AND INDENT COMMANDS]]    |                                 |
+| [[file:README.org::*(C) SYSTEM COMMANDS][(C) SYSTEM COMMANDS]]             |                                | [[file:README.org::*- (C) indent_for_tab_command (C-i)][- (C) indent_for_tab_command (C-i)]] |                                 |
+| [[file:README.org::*- (C) ignore][- (C) ignore]]                    |                                | [[file:README.org::*(C) EDIT COMMANDS][(C) EDIT COMMANDS]]                  |                                 |
+| [[file:README.org::*- (C) repeat][- (C) repeat]]                    |                                | [[file:README.org::*- (C) undo_only (C-/)][- (C) undo_only (C-/)]]              |                                 |
+| [[file:README.org::*(C) UNIVERSAL ARGUMENT COMMANDS][(C) UNIVERSAL ARGUMENT COMMANDS]] |                                | [[file:README.org::*- (C) search_forward (C-s)][- (C) search_forward (C-s)]]         |                                 |
+| [[file:README.org::*(C) FILES COMMANDS][(C) FILES COMMANDS]]              |                                | [[file:README.org::*- (C) search_backward (C-r)][- (C) search_backward (C-r)]]        |                                 |
+| [[file:README.org::*- (C) write_file][- (C) write_file]]                |                                | [[file:README.org::*(C) SYSTEM COMMANDS][(C) SYSTEM COMMANDS]]                |                                 |
+| [[file:README.org::*- (C) find_file][- (C) find_file]]                 |                                | [[file:README.org::*- (C) set_mark_command (C-SPC)][- (C) set_mark_command (C-SPC)]]     |                                 |
+| [[file:README.org::*- (C) dired][- (C) dired]]                     |                                | [[file:README.org::*- (C) set_c-x_command (C-x)][- (C) set_c-x_command (C-x)]]        |                                 |
+| [[file:README.org::*(C) WINDOWS FRAMES COMMANDS][(C) WINDOWS FRAMES COMMANDS]]     |                                | [[file:README.org::*- (C) keyboard_quit (C-g)][- (C) keyboard_quit (C-g)]]          |                                 |
+| [[file:README.org::*- (C) delete_window][- (C) delete_window]]             |                                | [[file:README.org::*(C) FILES COMMANDS][(C) FILES COMMANDS]]                 |                                 |
+| [[file:README.org::*- (C) split_window][- (C) split_window]]              |                                | [[file:README.org::*- (*C) save_buffer (C-x s)][- (*C) save_buffer (C-x s)]]         |                                 |
+| [[file:README.org::*- (C) previous_window][- (C) previous_window]]           |                                | [[file:README.org::*(C) WINDOWS FRAMES COMMANDS][(C) WINDOWS FRAMES COMMANDS]]        |                                 |
+| [[file:README.org::*(C) ADD HOOKS][(C) ADD HOOKS]]                   |                                | [[file:README.org::*- (*C) kill_frame (C-x c)][- (*C) kill_frame (C-x c)]]          |                                 |
+| [[file:README.org::*(C) ADD GENERIC GOTO LINE][(C) ADD GENERIC GOTO LINE]]       |                                | [[file:README.org::*- (C) next_window (C-x o)][- (C) next_window (C-x o)]]          |                                 |
+| [[file:README.org::*(C) ADD KILL RING][(C) ADD KILL RING]]               |                                | [[file:README.org::*- (C) suspend_frame (C-z)][- (C) suspend_frame (C-z)]]          |                                 |
+| [[file:README.org::*(N++) NotePad++][(N++) NotePad++]]                 |                                | [[file:README.org::*(C) ADD C-X (C-x)][(C) ADD C-X (C-x)]]                  |                                 |
+| [[file:README.org::*- (N++) isearch_backwards (C-r)][- (N++) isearch_backwards (C-r)]] |                                | [[file:README.org::*(VS) VISUAL STUDIO][(VS) VISUAL STUDIO]]                 |                                 |
+| [[file:README.org::*- (N++) isearch_forwards (C-s)][- (N++) isearch_forwards (C-s)]]  |                                | [[file:README.org::*- (VS) isearch_backwards (C-r)][- (VS) isearch_backwards (C-r)]]     |                                 |
+| [[file:README.org::*(E) ERGO PRESET SELECTION][(E) ERGO PRESET SELECTION]]       |                                | [[file:README.org::*- (VS) isearch_forwards (C-s)][- (VS) isearch_forwards (C-s)]]      |                                 |
+| [[file:README.org::*(E) ctrl_mapping][(E) ctrl_mapping]]                |                                | [[file:README.org::*- (VS) comment_line (C-i)][- (VS) comment_line (C-i)]]          |                                 |
+|                                 |                                | [[file:README.org::*- (VS) split window vert (C-x 3)][- (VS) split window vert (C-x 3)]]   |                                 |
+|                                 |                                | [[file:README.org::*(VC) VSCODE][(VC) VSCODE]]                        |                                 |
+|                                 |                                | [[file:README.org::*- (VC) comment_line][- (VC) comment_line]]                |                                 |
+|                                 |                                | [[file:README.org::*- (VC) recenter_line][- (VC) recenter_line]]               |                                 |
+|                                 |                                | [[file:README.org::*- (VC) indent_line][- (VC) indent_line]]                 |                                 |
 #+end:
 
 * Usage
@@ -253,106 +290,122 @@ Enjoy using WOWEE and bring the power of Emacs navigation to your Windows experi
 
 * ROADMAP
 
-** DONE CORE MOTION COMMANDS
-*** DONE - forward_char
-*** DONE - backward_char
-*** DONE - forward_word
-*** DONE - backward_word
-*** DONE - next_line
-*** DONE - previous_line
-** DONE CORE JUMPING AROUND COMMANDS
-*** DONE - scroll_down
-*** DONE - scroll_up
-*** IGNORE - scroll_left
-*** IGNORE - scroll_right
-*** DONE - move_beginning_of_line
-*** DONE - move_end_of_line
-*** DONE - beginning_of_buffer
-*** DONE - end_of_buffer
-*** DONE - goto_line
-** TODO CORE REGION COMMANDS
-*** TODO - mark_word
-*** DONE - mark_whole_line
-*** DONE - mark_whole_buffer
-*** DONE - kill_ring_save
-*** TODO - kill_region
-*** DONE - yank
-*** TODO - yank_pop
-*** DONE - delete_char
-*** TODO - delete_backward_char
-*** TODO - kill_word
-*** DONE - backward_kill_word
-*** DONE - kill_line
-*** TODO - kill_whole_line
-** TODO CORE NEWLINE AND INDENT COMMANDS
-*** TODO - newline
-*** IGNORE - open_line
-*** DONE - indent_for_tab_command
-*** TODO - delete_indentation
-** TODO CORE EDIT COMMANDS
-*** DONE - undo_only
-*** TODO - redo
-*** IGNORE - transpose_chars
-*** IGNORE - transpose_words
-*** IGNORE - transpose_lines
-*** TODO - query_replace
-*** DONE - search_forward
-*** DONE - search_backward
-*** TODO - overwrite_mode
-** IGNORE CORE CASE CONVERSION COMMANDS
-*** IGNORE - upcase_region
-*** IGNORE - downcase_region
-*** IGNORE - upcase_word
-*** IGNORE - downcase_word
-*** IGNORE - capitalize_word
-** TODO CORE INSERT PAIRS COMMANDS
-*** TODO - insert_parentheses
-*** TODO - insert_comment
-*** TODO - indent_new_comment_line
-** TODO CORE OTHER COMMANDS
-*** TODO - shell
-*** TODO - shell_command
-*** TODO - facemenu
-*** TODO - help
-** TODO CORE SYSTEM COMMANDS
-*** TODO - ignore
-*** DONE - set_mark_command
-*** DONE - set_cx_command
-*** DONE - keyboard_quit
-*** TODO - repeat
-** TODO CORE DIGIT ARGUMENT COMMANDS
-** IGNORE CORE MACRO RECORDING COMMANDS
-** TODO CORE FILES COMMANDS
-*** DONE - save_buffer
-*** TODO - write_file
-*** TODO - find_file
-*** TODO - dired
-** TODO CORE WINDOWS FRAMES COMMANDS
-*** TODO - kill_frame
-*** TODO - delete_window
-*** TODO - split_window
-*** TODO - next_window
-*** TODO - previous_window
-*** TODO - suspend_frame
-** TODO CORE ADD HOOKS
-** IGNORE CORE ADD IGNORE FRAMES
-** TODO ADD GENERIC GOTO LINE
-** TODO CORE ADD KILL RING
-** IGNORE CORE ADD MOUSE EVENTS
-** DONE CORE ADD C-X
-** DOING ---- VISUAL STUDIO ----
-*** DONE - isearch_backwards
-*** DONE - isearch_forwards
-*** DONE - comment_line
-*** DOING - recenter_line
-*** DOING - indent_line
-** DOING ---- VSCODE ----
-*** DOING - isearch_backwards
-*** DOING - isearch_forwards
-*** DONE - comment_line
-*** TODO - recenter_line
-*** TODO - indent_line
-** DOING ADD PROGRAM SPECIFIC PRESETS
-** TODO EXTRA ERGO PRESET SELECTION
-** TODO EXTRA
-*** TODO - ctrl_mapping
+** DONE (C) MOTION COMMANDS
+*** DONE - (C) forward_char (C-f)
+*** DONE - (C) backward_char (C-b)
+*** DONE - (C) forward_word (M-f)
+*** DONE - (C) backward_word (M-b)
+*** DONE - (C) next_line (C-n)
+*** DONE - (C) previous_line (C-p)
+** DONE (C) JUMPING AROUND COMMANDS
+*** DONE - (C) scroll_down (C-v)
+*** DONE - (C) scroll_up (M-v)
+*** DONE - (C) move_beginning_of_line (C-a)
+*** DONE - (C) move_end_of_line (C-e)
+*** DONE - (C) beginning_of_buffer (M-<)
+*** DONE - (C) end_of_buffer (M->)
+*** DONE - (C) goto_line (M-g g)
+** IGNORE (C) JUMPING AROUND COMMANDS
+*** IGNORE - (C) scroll_left
+*** IGNORE - (C) scroll_right
+** TODO (C) REGION COMMANDS
+*** TODO - (C) mark_word
+*** TODO - (C) yank_pop
+*** TODO - (C) kill_region
+*** TODO - (C) delete_backward_char
+*** TODO - (C) kill_word
+*** TODO - (C) kill_whole_line
+** DONE (C) REGION COMMANDS
+*** DONE - (E) mark_whole_line (M-s ,)
+*** DONE - (C) mark_whole_buffer (C-x h)
+*** DONE - (C) kill_ring_save (M-w)
+*** DONE - (C) yank (C-y)
+*** DONE - (C) delete_char (C-d)
+*** DONE - (C) backward_kill_word (M-BKSP)
+*** DONE - (C) kill_line (C-k)
+** TODO (C) NEWLINE AND INDENT COMMANDS
+*** TODO - (C) newline
+*** TODO - (C) delete_indentation
+** IGNORE (C) NEWLINE AND INDENT COMMANDS
+*** IGNORE - (C) open_line
+** DONE (C) NEWLINE AND INDENT COMMANDS
+*** DONE - (C) indent_for_tab_command (C-i)
+** TODO (C) EDIT COMMANDS
+*** TODO - (C) redo
+*** TODO - (C) query_replace
+*** TODO - (C) overwrite_mode
+** IGNORE (C) EDIT COMMANDS
+*** IGNORE - (C) transpose_chars
+*** IGNORE - (C) transpose_words
+*** IGNORE - (C) transpose_lines
+** DONE (C) EDIT COMMANDS
+*** DONE - (C) undo_only (C-/)
+*** DONE - (C) search_forward (C-s)
+*** DONE - (C) search_backward (C-r)
+*** TODO - (E) isearch-yank-word-or-char
+** IGNORE (C) CASE CONVERSION COMMANDS
+*** IGNORE - (C) upcase_region
+*** IGNORE - (C) downcase_region
+*** IGNORE - (C) upcase_word
+*** IGNORE - (C) downcase_word
+*** IGNORE - (C) capitalize_word
+** TODO (C) INSERT PAIRS COMMANDS
+*** TODO - (C) insert_parentheses
+*** TODO - (C) insert_comment
+*** TODO - (C) indent_new_comment_line
+** TODO (C) OTHER COMMANDS
+*** TODO - (C) shell
+*** TODO - (C) shell_command
+*** TODO - (C) facemenu
+*** TODO - (C) help
+** TODO (C) SYSTEM COMMANDS
+*** TODO - (C) ignore
+*** TODO - (C) repeat
+
+** DONE (C) SYSTEM COMMANDS
+*** DONE - (C) set_mark_command (C-SPC)
+*** DONE - (C) set_c-x_command (C-x)
+*** DONE - (C) keyboard_quit (C-g)
+** TODO (C) UNIVERSAL ARGUMENT COMMANDS
+** IGNORE (C) MACRO RECORDING COMMANDS
+** TODO (C) FILES COMMANDS
+*** TODO - (C) write_file
+*** TODO - (C) find_file
+*** TODO - (C) dired
+** DONE (C) FILES COMMANDS
+*** DONE - (*C) save_buffer (C-x s)
+** TODO (C) WINDOWS FRAMES COMMANDS
+*** TODO - (C) delete_window
+*** TODO - (C) split_window
+** DONE (C) WINDOWS FRAMES COMMANDS
+*** DONE - (*C) kill_frame (C-x c)
+*** DONE - (C) next_window (C-x o)
+*** TODO - (C) previous_window
+*** DONE - (C) suspend_frame (C-z)
+** TODO (C) ADD HOOKS
+** IGNORE (C) ADD IGNORE FRAMES
+** TODO (C) ADD GENERIC GOTO LINE
+** TODO (C) ADD KILL RING
+** IGNORE (C) ADD MOUSE EVENTS
+** DONE (C) ADD C-X (C-x)
+** DONE (VS) VISUAL STUDIO
+*** DONE - (VS) isearch_backwards (C-r)
+*** DONE - (VS) isearch_forwards (C-s)
+*** DONE - (VS) comment_line (C-i)
+*** DONE - (VS) split window vert (C-x 3)
+** DOING (VS) VISUAL STUDIO
+*** DOING - (VS) recenter_line (C-l)
+*** DOING - (VS) indent_line (C-i)
+** DOING (VC) VSCODE
+*** DOING - (VC) isearch_backwards (C-r)
+*** DOING - (VC) isearch_forwards (C-s)
+** DONE (VC) VSCODE
+*** DONE - (VC) comment_line
+*** DONE - (VC) recenter_line
+*** DONE - (VC) indent_line
+** TODO (N++) NotePad++
+*** TODO - (N++) isearch_backwards (C-r)
+*** TODO - (N++) isearch_forwards (C-s)
+** DOING (E) PROGRAM SPECIFIC PRESETS
+** TODO (E) ERGO PRESET SELECTION
+** TODO (E) ctrl_mapping

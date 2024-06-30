@@ -12,6 +12,7 @@
 ;; Control+p Control+l : Text Editor : Scroll Recenter
 ;; Control+p Control+f : Text Editor : Format selection
 ;; Control+p Control+/ : Text Editor : Toggle Comment Line
+;; Control+p Control+3 : Text Editor : New Vertical Tab Group
 
 #HotIf WinActive("ahk_exe devenv.exe")
 ^r::isearch("^p^r", "{Shift down}{F3}{Shift up}")
@@ -22,6 +23,18 @@
 !;::comment_line("^p^/")
 !+;::comment_line("^p^/")
 ^b::return
+;; -----------
+;; C-x bindings
+;; -----------
+; ^x:: {
+;         hook := InputHook("L1", "{3}")
+;         hook.Start()
+;         hook.Wait()
+;         if (hook.EndKey == "3") {
+;                 split_window_vertically()
+;         }
+;         hook := ""
+; }
 
 ;; -------------
 ;; VS Code
