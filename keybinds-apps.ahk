@@ -50,4 +50,16 @@
 !+;::comment_line("^p^/")
 ^b::return
 
+;; -------------
+;; Notepad++
+;; -------------
+;; Shortcut rebindings:
+;;
+
+#HotIf WinActive("ahk_class Notepad++")
+^r::isearch("^!i", "{Shift down}{F3}{Shift up}")
+^s::isearch("^!i", "{F3}")
+!;::comment_line("^q")
+!+;::comment_line("^q")
+
 #HotIf

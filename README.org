@@ -16,6 +16,13 @@ WOWEE is a set of AutoHotKey scripts designed to bring Emacs-like commands and k
 
 * Whats New
 
+** Version 0.3.3 <2024-07-01>
+
+A little support for Notepad++:
+
+- isearch
+- comment line
+
 ** Version 0.3.2 <2024-07-01>
 
 Separated individual ergonomic key-mappings as thus:
@@ -40,6 +47,7 @@ This commit has added windows, frames support
 ** Version 0.3.0 <2024-06-28>
 
 This commit has split out ahk files into apps, core and init:
+
 - Added comment-line
 - Added mark-whole-buffer
 - Refined isearch
@@ -133,7 +141,7 @@ Both can also be run if desired!
 ** Foibles
 
 1. I have yet to implement C-x C-<key> but these functions, for example like save-buffer (C-x C-s) and save-buffers-kill-terminal (C-x C-z) are still accessible, but without the second Control, for example C-x s and C-x z
-2. Any application shortcut re-mappings are using the convention C-p C-<key>, this is temporary as I never use C-p (print) and though this would be a good unique leader key combination.
+2. Any application shortcut re-mappings are using the convention C-p C-<key>, this is temporary as I never use C-p (print) and thought this would be a good unique leader key combination.
 
 ** Applications
 
@@ -169,11 +177,11 @@ and any command with an asterisk is an unconventional Emacs keybinding which wil
 | [[file:README.org::*- (C) kill_region][- (C) kill_region]]               | [[file:README.org::*(VC) VSCODE][(VC) VSCODE]]                    | [[file:README.org::*- (C) forward_word (M-f)][- (C) forward_word (M-f)]]           | [[file:README.org::*(C) NEWLINE AND INDENT COMMANDS][(C) NEWLINE AND INDENT COMMANDS]] |
 | [[file:README.org::*- (C) delete_backward_char][- (C) delete_backward_char]]      | [[file:README.org::*- (VC) isearch_backwards (C-r)][- (VC) isearch_backwards (C-r)]] | [[file:README.org::*- (C) backward_word (M-b)][- (C) backward_word (M-b)]]          | [[file:README.org::*- (C) open_line][- (C) open_line]]                 |
 | [[file:README.org::*- (C) kill_word][- (C) kill_word]]                 | [[file:README.org::*- (VC) isearch_forwards (C-s)][- (VC) isearch_forwards (C-s)]]  | [[file:README.org::*- (C) next_line (C-n)][- (C) next_line (C-n)]]              | [[file:README.org::*(C) EDIT COMMANDS][(C) EDIT COMMANDS]]               |
-| [[file:README.org::*- (C) kill_whole_line][- (C) kill_whole_line]]           | [[file:README.org::*(E) PROGRAM SPECIFIC PRESETS][(E) PROGRAM SPECIFIC PRESETS]]   | [[file:README.org::*- (C) previous_line (C-p)][- (C) previous_line (C-p)]]          | [[file:README.org::*- (C) transpose_chars][- (C) transpose_chars]]           |
-| [[file:README.org::*(C) NEWLINE AND INDENT COMMANDS][(C) NEWLINE AND INDENT COMMANDS]] |                                | [[file:README.org::*(C) JUMPING AROUND COMMANDS][(C) JUMPING AROUND COMMANDS]]        | [[file:README.org::*- (C) transpose_words][- (C) transpose_words]]           |
-| [[file:README.org::*- (C) newline][- (C) newline]]                   |                                | [[file:README.org::*- (C) scroll_down (C-v)][- (C) scroll_down (C-v)]]            | [[file:README.org::*- (C) transpose_lines][- (C) transpose_lines]]           |
-| [[file:README.org::*- (C) delete_indentation][- (C) delete_indentation]]        |                                | [[file:README.org::*- (C) scroll_up (M-v)][- (C) scroll_up (M-v)]]              | [[file:README.org::*(C) CASE CONVERSION COMMANDS][(C) CASE CONVERSION COMMANDS]]    |
-| [[file:README.org::*(C) EDIT COMMANDS][(C) EDIT COMMANDS]]               |                                | [[file:README.org::*- (C) move_beginning_of_line (C-a)][- (C) move_beginning_of_line (C-a)]] | [[file:README.org::*- (C) upcase_region][- (C) upcase_region]]             |
+| [[file:README.org::*- (C) kill_whole_line][- (C) kill_whole_line]]           | [[file:README.org::*- (VC) comment_line (C-;)][- (VC) comment_line (C-;)]]      | [[file:README.org::*- (C) previous_line (C-p)][- (C) previous_line (C-p)]]          | [[file:README.org::*- (C) transpose_chars][- (C) transpose_chars]]           |
+| [[file:README.org::*(C) NEWLINE AND INDENT COMMANDS][(C) NEWLINE AND INDENT COMMANDS]] | [[file:README.org::*- (VC) recenter_line (C-l)][- (VC) recenter_line (C-l)]]     | [[file:README.org::*(C) JUMPING AROUND COMMANDS][(C) JUMPING AROUND COMMANDS]]        | [[file:README.org::*- (C) transpose_words][- (C) transpose_words]]           |
+| [[file:README.org::*- (C) newline][- (C) newline]]                   | [[file:README.org::*(N++) NOTEPAD++][(N++) NOTEPAD++]]                | [[file:README.org::*- (C) scroll_down (C-v)][- (C) scroll_down (C-v)]]            | [[file:README.org::*- (C) transpose_lines][- (C) transpose_lines]]           |
+| [[file:README.org::*- (C) delete_indentation][- (C) delete_indentation]]        | [[file:README.org::*(E) PROGRAM SPECIFIC PRESETS][(E) PROGRAM SPECIFIC PRESETS]]   | [[file:README.org::*- (C) scroll_up (M-v)][- (C) scroll_up (M-v)]]              | [[file:README.org::*(C) CASE CONVERSION COMMANDS][(C) CASE CONVERSION COMMANDS]]    |
+| [[file:README.org::*(C) EDIT COMMANDS][(C) EDIT COMMANDS]]               | [[file:README.org::*(E) ERGO PRESET SELECTION][(E) ERGO PRESET SELECTION]]      | [[file:README.org::*- (C) move_beginning_of_line (C-a)][- (C) move_beginning_of_line (C-a)]] | [[file:README.org::*- (C) upcase_region][- (C) upcase_region]]             |
 | [[file:README.org::*- (C) redo][- (C) redo]]                      |                                | [[file:README.org::*- (C) move_end_of_line (C-e)][- (C) move_end_of_line (C-e)]]       | [[file:README.org::*- (C) downcase_region][- (C) downcase_region]]           |
 | [[file:README.org::*- (C) query_replace][- (C) query_replace]]             |                                | [[file:README.org::*- (C) beginning_of_buffer (M-<)][- (C) beginning_of_buffer (M-<)]]    | [[file:README.org::*- (C) upcase_word][- (C) upcase_word]]               |
 | [[file:README.org::*- (C) overwrite_mode][- (C) overwrite_mode]]            |                                | [[file:README.org::*- (C) end_of_buffer (M->)][- (C) end_of_buffer (M->)]]          | [[file:README.org::*- (C) downcase_word][- (C) downcase_word]]             |
@@ -202,16 +210,16 @@ and any command with an asterisk is an unconventional Emacs keybinding which wil
 | [[file:README.org::*(C) ADD HOOKS][(C) ADD HOOKS]]                   |                                | [[file:README.org::*- (*C) kill_frame (C-x c)][- (*C) kill_frame (C-x c)]]          |                                 |
 | [[file:README.org::*(C) ADD GENERIC GOTO LINE][(C) ADD GENERIC GOTO LINE]]       |                                | [[file:README.org::*- (C) next_window (C-x o)][- (C) next_window (C-x o)]]          |                                 |
 | [[file:README.org::*(C) ADD KILL RING][(C) ADD KILL RING]]               |                                | [[file:README.org::*- (C) suspend_frame (C-z)][- (C) suspend_frame (C-z)]]          |                                 |
-| [[file:README.org::*(N++) NotePad++][(N++) NotePad++]]                 |                                | [[file:README.org::*(C) ADD C-X (C-x)][(C) ADD C-X (C-x)]]                  |                                 |
-| [[file:README.org::*- (N++) isearch_backwards (C-r)][- (N++) isearch_backwards (C-r)]] |                                | [[file:README.org::*(VS) VISUAL STUDIO][(VS) VISUAL STUDIO]]                 |                                 |
-| [[file:README.org::*- (N++) isearch_forwards (C-s)][- (N++) isearch_forwards (C-s)]]  |                                | [[file:README.org::*- (VS) isearch_backwards (C-r)][- (VS) isearch_backwards (C-r)]]     |                                 |
-| [[file:README.org::*(E) ERGO PRESET SELECTION][(E) ERGO PRESET SELECTION]]       |                                | [[file:README.org::*- (VS) isearch_forwards (C-s)][- (VS) isearch_forwards (C-s)]]      |                                 |
-| [[file:README.org::*(E) ctrl_mapping][(E) ctrl_mapping]]                |                                | [[file:README.org::*- (VS) comment_line (C-i)][- (VS) comment_line (C-i)]]          |                                 |
+| [[file:README.org::*(VC) VSCODE][(VC) VSCODE]]                     |                                | [[file:README.org::*(C) ADD C-X (C-x)][(C) ADD C-X (C-x)]]                  |                                 |
+| [[file:README.org::*- (VC) indent_line (C-i)][- (VC) indent_line (C-i)]]        |                                | [[file:README.org::*(VS) VISUAL STUDIO][(VS) VISUAL STUDIO]]                 |                                 |
+|                                 |                                | [[file:README.org::*- (VS) isearch_backwards (C-r)][- (VS) isearch_backwards (C-r)]]     |                                 |
+|                                 |                                | [[file:README.org::*- (VS) isearch_forwards (C-s)][- (VS) isearch_forwards (C-s)]]      |                                 |
+|                                 |                                | [[file:README.org::*- (VS) comment_line (C-;)][- (VS) comment_line (C-;)]]          |                                 |
 |                                 |                                | [[file:README.org::*- (VS) split window vert (C-x 3)][- (VS) split window vert (C-x 3)]]   |                                 |
-|                                 |                                | [[file:README.org::*(VC) VSCODE][(VC) VSCODE]]                        |                                 |
-|                                 |                                | [[file:README.org::*- (VC) comment_line][- (VC) comment_line]]                |                                 |
-|                                 |                                | [[file:README.org::*- (VC) recenter_line][- (VC) recenter_line]]               |                                 |
-|                                 |                                | [[file:README.org::*- (VC) indent_line][- (VC) indent_line]]                 |                                 |
+|                                 |                                | [[file:README.org::*(N++) NOTEPAD++][(N++) NOTEPAD++]]                    |                                 |
+|                                 |                                | [[file:README.org::*- (N++) isearch_backwards (C-r)][- (N++) isearch_backwards (C-r)]]    |                                 |
+|                                 |                                | [[file:README.org::*- (N++) isearch_forwards (C-s)][- (N++) isearch_forwards (C-s)]]     |                                 |
+|                                 |                                | [[file:README.org::*- (N++) comment_line (C-;)][- (N++) comment_line (C-;)]]         |                                 |
 #+end:
 
 * Usage
@@ -389,7 +397,6 @@ Enjoy using WOWEE and bring the power of Emacs navigation to your Windows experi
 ** TODO (C) SYSTEM COMMANDS
 *** TODO - (C) ignore
 *** TODO - (C) repeat
-
 ** DONE (C) SYSTEM COMMANDS
 *** DONE - (C) set_mark_command (C-SPC)
 *** DONE - (C) set_c-x_command (C-x)
@@ -419,21 +426,22 @@ Enjoy using WOWEE and bring the power of Emacs navigation to your Windows experi
 ** DONE (VS) VISUAL STUDIO
 *** DONE - (VS) isearch_backwards (C-r)
 *** DONE - (VS) isearch_forwards (C-s)
-*** DONE - (VS) comment_line (C-i)
+*** DONE - (VS) comment_line (C-;)
 *** DONE - (VS) split window vert (C-x 3)
 ** DOING (VS) VISUAL STUDIO
 *** DOING - (VS) recenter_line (C-l)
 *** DOING - (VS) indent_line (C-i)
+** TODO (VC) VSCODE
+*** TODO - (VC) indent_line (C-i)
 ** DOING (VC) VSCODE
 *** DOING - (VC) isearch_backwards (C-r)
 *** DOING - (VC) isearch_forwards (C-s)
-** DONE (VC) VSCODE
-*** DONE - (VC) comment_line
-*** DONE - (VC) recenter_line
-*** DONE - (VC) indent_line
-** TODO (N++) NotePad++
-*** TODO - (N++) isearch_backwards (C-r)
-*** TODO - (N++) isearch_forwards (C-s)
+*** DOING - (VC) comment_line (C-;)
+*** DOING - (VC) recenter_line (C-l)
+** DOING (N++) NOTEPAD++
+** DONE (N++) NOTEPAD++
+*** DONE - (N++) isearch_backwards (C-r)
+*** DONE - (N++) isearch_forwards (C-s)
+*** DONE - (N++) comment_line (C-;)
 ** DOING (E) PROGRAM SPECIFIC PRESETS
-** TODO (E) ERGO PRESET SELECTION
-** TODO (E) ctrl_mapping
+** DOING (E) ERGO PRESET SELECTION

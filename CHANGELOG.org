@@ -13,6 +13,13 @@ With a roadmap and issues also supplied
 
 * Versions
 
+** Version 0.3.3 <2024-07-01>
+
+A little support for Notepad++:
+
+- isearch
+- comment line
+
 ** Version 0.3.2 <2024-07-01>
 
 Separated individual ergonomic key-mappings as thus:
@@ -36,6 +43,7 @@ This commit has added windows, frames support
 ** Version 0.3.0 <2024-06-28>
 
 This commit has split out ahk files into apps, core and init:
+
 - Added comment-line
 - Added mark-whole-buffer
 - Refined isearch
