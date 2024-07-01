@@ -1,5 +1,3 @@
-RAlt::Control
-CapsLock::Control
 #Include fundamental.ahk
 #Include commands.ahk
 #Include keybinds-apps.ahk

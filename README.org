@@ -16,6 +16,15 @@ WOWEE is a set of AutoHotKey scripts designed to bring Emacs-like commands and k
 
 * Whats New
 
+** Version 0.3.2 <2024-07-01>
+
+Separated individual ergonomic key-mappings as thus:
+
+- wowee--caps_to_ctrl.ahk
+- wowee--ralt_to_ctrl.ahk
+
+These are extra files that can be run in addition to the main wowee.ahk for some common ergonomic keyboard Emacs mappings.
+
 ** Version 0.3.1 <2024-06-30>
 
 This commit has added windows, frames support
@@ -56,30 +65,37 @@ functionality of the `commands.ahk` script. Notable additions include:
 
 Initial version
 
-
 * Features
 
 - Emacs-like commands and keybindings in Windows
 - Based on EWOW – Emacs Way of Operating Windows
 - Written in AutoHotKey v2
 - Includes various Emacs style navigation commands
-- Ergonomic keyboard layout options
+- =(a) Ergonomic keyboard layout options=
+  - map caps lock key to control
+  - map right alt key to control
 - Easily add your own keybindings by modifying AHK source files
-- =(a) Bindings bespoke to individual applications=
-
-** Foibles
-
-1. I have yet to implement C-x C-<key> but these functions, for example like save-buffer (C-x C-s) and save-buffers-kill-terminal (C-x C-z) are still accessible, but without the second Control, for example C-x s and C-x z
-2. Any application shortcut re-mappings are using the convention C-p C-<key>, this is temporary as I never use C-p (print) and though this would be a good unique leader key combination.
-
-** Applications
-
-The applications I am currently looking to support are the following:
-- Visual Studio
-- VSCode
-- NotePad++
+- =(b) Bindings bespoke to individual applications=
 
 ** Development
+
+*** =(a) Ergonomic keyboard layout options=
+
+Additional AHK files that can be run in parallel with the main wowee.ahk file if you would prefer some extra ergonomic mappings.
+
+For example it is common to map the Caps Lock key to the Control key to avoid the dreaded Emacs pinky, which can be performed by running up :
+
+#+begin_src
+wowee--caps_to_ctrl.ahk
+#+end_src
+
+I prefer to map the right hand Alt key to the Control key by running:
+
+#+begin_src
+wowee--ralt_to_ctrl.ahk
+#+end_src
+
+Both can also be run if desired!
 
 *** =(a) Bindings bespoke to individual applications=
 
@@ -113,6 +129,18 @@ The applications I am currently looking to support are the following:
   Also I might have to create some more generic functions to accept arguments defining application specific commands, as demonstrated above with isearch_forward and isearch_backward.
 
   As part of this I might have to expand the kanban per application, or maybe separate kanbans on which functions have been implemented.
+
+** Foibles
+
+1. I have yet to implement C-x C-<key> but these functions, for example like save-buffer (C-x C-s) and save-buffers-kill-terminal (C-x C-z) are still accessible, but without the second Control, for example C-x s and C-x z
+2. Any application shortcut re-mappings are using the convention C-p C-<key>, this is temporary as I never use C-p (print) and though this would be a good unique leader key combination.
+
+** Applications
+
+The applications I am currently looking to support are the following:
+- Visual Studio
+- VSCode
+- NotePad++
 
 ** kanban
 
