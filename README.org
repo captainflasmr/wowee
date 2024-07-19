@@ -10,20 +10,30 @@
 #+attr_html: :width 100%
 [[file:img/WOWEE---Windows-Operating-With-Emacs-Enhancements_banner.jpg]]
 
-* Overview
+* Summary
 
 WOWEE is a set of AutoHotKey scripts designed to bring Emacs-like commands and keybindings to the Windows operating system. Based on the concept of EWOW (Emacs Way of Operating Windows), WOWEE allows you to use Emacs-style navigation and commands throughout your Windows environment.
 
 * Whats New
 
-** Version 0.3.3 <2024-07-01>
+** v0.3.4 <2024-07-19>
+
+feat: Add xref navigation functions and keybindings
+
+- Introduced xref_find_references(), xref_go_back(), and xref_find_definitions() functions in commands.ahk for navigation.
+- Assigned new keybindings in keybinds-core.ahk:
+  - Alt+. for xref_find_definitions()
+  - Alt+, for xref_go_back()
+  - Alt+? for xref_find_references()
+
+** v0.3.3 <2024-07-01>
 
 A little support for Notepad++:
 
 - isearch
 - comment line
 
-** Version 0.3.2 <2024-07-01>
+** v0.3.2 <2024-07-01>
 
 Separated individual ergonomic key-mappings as thus:
 
@@ -32,7 +42,7 @@ Separated individual ergonomic key-mappings as thus:
 
 These are extra files that can be run in addition to the main wowee.ahk for some common ergonomic keyboard Emacs mappings.
 
-** Version 0.3.1 <2024-06-30>
+** v0.3.1 <2024-06-30>
 
 This commit has added windows, frames support
 
@@ -44,7 +54,7 @@ This commit has added windows, frames support
 - reorganisation of kanban
 - reorganisation of commands.ahk to better group
 
-** Version 0.3.0 <2024-06-28>
+** v0.3.0 <2024-06-28>
 
 This commit has split out ahk files into apps, core and init:
 
@@ -56,7 +66,7 @@ This commit has split out ahk files into apps, core and init:
 - Added beginning_of_buffer and end_of_buffer core mappings
 - Added mark_whole_buffer core mapping
 
-** Version 0.2.0 <2024-06-26>
+** v0.2.0 <2024-06-26>
 
 This commit introduces several new functions to enhance the usability and
 functionality of the `commands.ahk` script. Notable additions include:
@@ -69,9 +79,15 @@ functionality of the `commands.ahk` script. Notable additions include:
 - Update to `kill_ring_save` to include an escape key press, ensuring a more comprehensive cleanup post-operation.
 - Improved the README.org kanban to more easily differentiate between command sections and to define those commands I am not implementing (IGNORE) and those additional commands (EXTRA)
 
-** Version 0.1.0 <2024-06-19>
+** v0.1.0 <2024-06-19>
 
 Initial version
+
+* Quick Start / Installation / Usage
+
+1. **Install AutoHotKey**: Download and install AutoHotKey from [AutoHotKey's official website](https://www.autohotkey.com/).
+2. **Run WOWEE**: Double-click on the `wowee.ahk` script to start WOWEE. Once running, Emacs commands will be available in your Windows environment.
+3. **Quit WOWEE**: To quit WOWEE, right-click the AutoHotKey icon in the task tray and select "Exit."
 
 * Features
 
@@ -182,7 +198,7 @@ and any command with an asterisk is an unconventional Emacs keybinding which wil
 | [[file:README.org::*- (C) newline][- (C) newline]]                   | [[file:README.org::*(N++) NOTEPAD++][(N++) NOTEPAD++]]                | [[file:README.org::*- (C) scroll_down (C-v)][- (C) scroll_down (C-v)]]            | [[file:README.org::*- (C) transpose_lines][- (C) transpose_lines]]           |
 | [[file:README.org::*- (C) delete_indentation][- (C) delete_indentation]]        | [[file:README.org::*(E) PROGRAM SPECIFIC PRESETS][(E) PROGRAM SPECIFIC PRESETS]]   | [[file:README.org::*- (C) scroll_up (M-v)][- (C) scroll_up (M-v)]]              | [[file:README.org::*(C) CASE CONVERSION COMMANDS][(C) CASE CONVERSION COMMANDS]]    |
 | [[file:README.org::*(C) EDIT COMMANDS][(C) EDIT COMMANDS]]               | [[file:README.org::*(E) ERGO PRESET SELECTION][(E) ERGO PRESET SELECTION]]      | [[file:README.org::*- (C) move_beginning_of_line (C-a)][- (C) move_beginning_of_line (C-a)]] | [[file:README.org::*- (C) upcase_region][- (C) upcase_region]]             |
-| [[file:README.org::*- (C) redo][- (C) redo]]                      |                                | [[file:README.org::*- (C) move_end_of_line (C-e)][- (C) move_end_of_line (C-e)]]       | [[file:README.org::*- (C) downcase_region][- (C) downcase_region]]           |
+| [[file:README.org::*- (C) redo][- (C) redo]]                      | [[file:README.org::*(E) xref_go_back][(E) xref_go_back]]               | [[file:README.org::*- (C) move_end_of_line (C-e)][- (C) move_end_of_line (C-e)]]       | [[file:README.org::*- (C) downcase_region][- (C) downcase_region]]           |
 | [[file:README.org::*- (C) query_replace][- (C) query_replace]]             |                                | [[file:README.org::*- (C) beginning_of_buffer (M-<)][- (C) beginning_of_buffer (M-<)]]    | [[file:README.org::*- (C) upcase_word][- (C) upcase_word]]               |
 | [[file:README.org::*- (C) overwrite_mode][- (C) overwrite_mode]]            |                                | [[file:README.org::*- (C) end_of_buffer (M->)][- (C) end_of_buffer (M->)]]          | [[file:README.org::*- (C) downcase_word][- (C) downcase_word]]             |
 | [[file:README.org::*- (E) isearch-yank-word-or-char][- (E) isearch-yank-word-or-char]] |                                | [[file:README.org::*- (C) goto_line (M-g g)][- (C) goto_line (M-g g)]]            | [[file:README.org::*- (C) capitalize_word][- (C) capitalize_word]]           |
@@ -220,13 +236,9 @@ and any command with an asterisk is an unconventional Emacs keybinding which wil
 |                                 |                                | [[file:README.org::*- (N++) isearch_backwards (C-r)][- (N++) isearch_backwards (C-r)]]    |                                 |
 |                                 |                                | [[file:README.org::*- (N++) isearch_forwards (C-s)][- (N++) isearch_forwards (C-s)]]     |                                 |
 |                                 |                                | [[file:README.org::*- (N++) comment_line (C-;)][- (N++) comment_line (C-;)]]         |                                 |
+|                                 |                                | [[file:README.org::*(E) xref_find_definitions][(E) xref_find_definitions]]          |                                 |
+|                                 |                                | [[file:README.org::*(E) xref_find_references][(E) xref_find_references]]           |                                 |
 #+end:
-
-* Usage
-
-1. **Install AutoHotKey**: Download and install AutoHotKey from [AutoHotKey's official website](https://www.autohotkey.com/).
-2. **Run WOWEE**: Double-click on the `wowee.ahk` script to start WOWEE. Once running, Emacs commands will be available in your Windows environment.
-3. **Quit WOWEE**: To quit WOWEE, right-click the AutoHotKey icon in the task tray and select "Exit."
 
 * Configuration
 
@@ -445,3 +457,6 @@ Enjoy using WOWEE and bring the power of Emacs navigation to your Windows experi
 *** DONE - (N++) comment_line (C-;)
 ** DOING (E) PROGRAM SPECIFIC PRESETS
 ** DOING (E) ERGO PRESET SELECTION
+** DONE (E) xref_find_definitions
+** DOING (E) xref_go_back
+** DONE (E) xref_find_references

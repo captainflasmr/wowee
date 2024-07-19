@@ -13,14 +13,24 @@ With a roadmap and issues also supplied
 
 * Versions
 
-** Version 0.3.3 <2024-07-01>
+** v0.3.4 <2024-07-19>
+
+feat: Add xref navigation functions and keybindings
+
+- Introduced xref_find_references(), xref_go_back(), and xref_find_definitions() functions in commands.ahk for navigation.
+- Assigned new keybindings in keybinds-core.ahk:
+  - Alt+. for xref_find_definitions()
+  - Alt+, for xref_go_back()
+  - Alt+? for xref_find_references()
+
+** v0.3.3 <2024-07-01>
 
 A little support for Notepad++:
 
 - isearch
 - comment line
 
-** Version 0.3.2 <2024-07-01>
+** v0.3.2 <2024-07-01>
 
 Separated individual ergonomic key-mappings as thus:
 
@@ -29,7 +39,7 @@ Separated individual ergonomic key-mappings as thus:
 
 These are extra files that can be run in addition to the main wowee.ahk for some common ergonomic keyboard Emacs mappings.
 
-** Version 0.3.1 <2024-06-30>
+** v0.3.1 <2024-06-30>
 
 This commit has added windows, frames support
 
@@ -40,7 +50,7 @@ This commit has added windows, frames support
 - suspend frame (C-z)
 - reorganisation of kanban
 
-** Version 0.3.0 <2024-06-28>
+** v0.3.0 <2024-06-28>
 
 This commit has split out ahk files into apps, core and init:
 
@@ -52,7 +62,7 @@ This commit has split out ahk files into apps, core and init:
 - Added beginning_of_buffer and end_of_buffer core mappings
 - Added mark_whole_buffer core mapping
 
-** Version 0.2.0 <2024-06-26>
+** v0.2.0 <2024-06-26>
 
 This commit introduces several new functions to enhance the usability and
 functionality of the `commands.ahk` script. Notable additions include:
@@ -65,14 +75,14 @@ functionality of the `commands.ahk` script. Notable additions include:
 - Update to `kill_ring_save` to include an escape key press, ensuring a more comprehensive cleanup post-operation.
 - Improved the README.org kanban to more easily differentiate between command sections and to define those commands I am not implementing (IGNORE) and those additional commands (EXTRA)
 
-** Version 0.1.0 <2024-06-19>
+** v0.1.0 <2024-06-19>
 
 Initial version
-
-* ISSUES
-
-NONE
 
 * Testing
 
 Run wowee.ahk on Windows and perform emacs like commands in various applications.
+
+* Validation
+
+Autohotkey raises no errors when running.
