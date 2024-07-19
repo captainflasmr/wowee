@@ -14,6 +14,9 @@
 !bs::backward_kill_word()
 !<::beginning_of_buffer()
 !>::end_of_buffer()
+!.::xref_find_definitions()
+!,::xref_go_back()
+!?::xref_find_references()
 
 ;; -----------
 ;; C- bindings

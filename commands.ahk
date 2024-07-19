@@ -5,6 +5,24 @@
 global selecting := false
 global searching := false
 
+xref_find_references() {
+        global selecting
+        selecting := false
+        command_simple("+{F12}", 0, 1)
+}
+
+xref_go_back() {
+        global selecting
+        selecting := false
+        command_simple("{^^-", 0, 1)
+}
+
+xref_find_definitions() {
+        global selecting
+        selecting := false
+        command_simple("{F12}", 0, 1)
+}
+
 ;; ------
 ;; system
 ;; ------
