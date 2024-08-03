@@ -13,6 +13,24 @@ With a roadmap and issues also supplied
 
 * Versions
 
+** v0.3.5 <2024-08-03>
+
+feat: Add global keybinds and minor refactor
+
+- Added a new file `keybinds-global.ahk` which includes essential keybindings for workspace switching, quitting windows, and starting applications like Emacs and Firefox.
+- Updated `wowee.ahk` to include `keybinds-global.ahk` for enhanced functionality with global keybindings.
+
+Details:
+
+- `keybinds-global.ahk`:
+  - Introduced local utility functions for workspace navigation and window management.
+  - Added workspace switching keybindings (`#i`, `#u`).
+  - Added window quitting keybinding (`#q`).
+  - Added startup applications keybindings (`#m` for Emacs, `#n` for Firefox).
+
+- `wowee.ahk`:
+  - Included `keybinds-global.ahk` to make use of the new global keybindings.
+
 ** v0.3.4 <2024-07-19>
 
 feat: Add xref navigation functions and keybindings
